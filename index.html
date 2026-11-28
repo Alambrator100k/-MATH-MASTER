@@ -4,1223 +4,1045 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b1020">
-<title>ALAMBRATOR Math Academy | الإصدار المطور</title>
+<title>ALAMBRATOR Math Academy | v5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- ===== 12 خط عربي متنوع ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&family=Almarai:wght@400;700;800&family=Amiri:wght@400;700&family=Lateef&family=Scheherazade+New:wght@400;700&family=Reem+Kufi:wght@400;600;700&family=El+Messiri:wght@400;600;700&family=Markazi+Text:wght@400;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- ===== MathJax v3 ===== -->
 <script>
 window.MathJax = {
-  tex: {inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']]},
-  svg: {fontCache: 'global'}
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$','$']],
+    displayMath: [['\\[','\\]'], ['$$','$$']]
+  },
+  svg: { fontCache: 'global' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
 };
-
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjs@13.2.2/lib/browser/math.js"></script>
-<style>
-:root{--bg:#080d19;
---panel:#101827;
---panel2:#141f32;
---panel3:#1a2940;
---line:#26364f;
---text:#edf4ff;
---muted:#94a6c2;
---cyan:#42d9f5;
---blue:#668cff;
---purple:#a78bfa;
---green:#4ade80;
---amber:#fbbf24;
---red:#fb7185;
---shadow:0 18px 55px #0005}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;
-background:radial-gradient(ellipse at 15% 0%,#142647 0,transparent 38%),var(--bg);
-color:var(--text);
-font-family:'Cairo',sans-serif;
-min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;
-grid-template-columns:270px minmax(0,1fr);
-min-height:100vh}.sidebar{height:100vh;
-position:sticky;
-top:0;
-padding:24px 17px;
-border-left:1px solid var(--line);
-background:#0b1220eF;
-backdrop-filter:blur(18px);
-display:flex;
-flex-direction:column;
-z-index:5}.brand{display:flex;
-align-items:center;
-gap:12px;
-padding:4px 8px 25px}.brand-mark{width:44px;
-height:44px;
-border-radius:14px;
-background:linear-gradient(140deg,var(--cyan),var(--blue));
-display:grid;
-place-items:center;
-color:#07111d;
-font-size:23px;
-font-weight:900;
-box-shadow:0 8px 24px #42d9f544}.brand strong{font-size:18px;
-letter-spacing:.4px}.brand small{display:block;
-color:var(--muted);
-font-size:10px;
-letter-spacing:1.6px;
-direction:ltr;
-text-align:right}.nav-label{font-size:10px;
-color:#61738f;
-font-weight:800;
-padding:10px 13px 7px}.nav{display:grid;
-gap:5px}.nav button{border:1px solid transparent;
-color:#a9b8ce;
-background:transparent;
-text-align:right;
-padding:10px 13px;
-border-radius:12px;
-display:flex;
-align-items:center;
-gap:12px;
-font-size:13px;
-transition:.2s}.nav button:hover{background:#17243a;
-color:white}.nav button.active{background:linear-gradient(100deg,#1c3a53,#172641);
-border-color:#28516a;
-color:#70e7fa;
-box-shadow:inset -3px 0 var(--cyan)}.nav .ico{width:20px;
-text-align:center;
-font-size:16px}.side-bottom{margin-top:auto}.profile{background:linear-gradient(145deg,#17263c,#101827);
-border:1px solid var(--line);
-padding:13px;
-border-radius:15px;
-display:flex;
-gap:10px;
-align-items:center}.avatar{width:37px;
-height:37px;
-border-radius:12px;
-background:#203b57;
-color:var(--cyan);
-display:grid;
-place-items:center;
-font-weight:900}.profile b{font-size:12px}.profile small{display:block;
-color:var(--muted);
-font-size:10px}.main{min-width:0;
-padding:24px clamp(16px,3vw,42px) 60px;
-max-width:1600px;
-width:100%;
-margin:auto}.topbar{display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-margin-bottom:25px}.crumb{color:var(--muted);
-font-size:12px}.crumb b{color:var(--text)}.top-actions{display:flex;
-gap:9px;
-align-items:center}.icon-btn,.btn{border:1px solid var(--line);
-background:var(--panel);
-color:var(--text);
-border-radius:11px;
-padding:9px 13px}.icon-btn{width:40px;
-height:40px;
-padding:0;
-font-size:17px}.btn.primary{background:linear-gradient(110deg,#26bcd8,#6287ff);
-border:0;
-color:#06111e;
-font-weight:800}.btn.ghost:hover,.icon-btn:hover{border-color:var(--cyan)}.hero{position:relative;
-overflow:hidden;
-border:1px solid #294765;
-border-radius:23px;
-padding:clamp(22px,4vw,38px);
-background:linear-gradient(115deg,#10243b 0%,#152744 54%,#17213a 100%);
-box-shadow:var(--shadow);
-margin-bottom:22px}.hero:after{content:"∫";
-position:absolute;
-left:7%;
-top:-65px;
-font:230px Georgia;
-color:#6ee7f51a;
-transform:rotate(-13deg)}.eyebrow{display:inline-flex;
-align-items:center;
-gap:7px;
-color:#6ce7f5;
-font-size:11px;
-font-weight:800;
-letter-spacing:1px}.hero h1{font-size:clamp(25px,4vw,39px);
-line-height:1.45;
-margin:12px 0 7px;
-font-weight:900}.hero p{color:#b5c5dc;
-max-width:680px;
-font-size:13px;
-line-height:2;
-margin:0 0 20px}.hero-actions{display:flex;
-gap:10px;
-flex-wrap:wrap}.hero-stats{display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin:18px 0 26px}.stat,.card{background:linear-gradient(145deg,#111c2d,#0e1726);
-border:1px solid var(--line);
-border-radius:17px;
-padding:17px}.stat small{color:var(--muted);
-font-size:11px}.stat strong{display:block;
-font-size:25px;
-margin-top:3px}.stat .unit{font-size:11px;
-color:var(--muted);
-font-weight:500}.section-head{display:flex;
-align-items:end;
-justify-content:space-between;
-gap:12px;
-margin:25px 0 13px}.section-head h2{font-size:18px;
-margin:0}.section-head p{margin:3px 0 0;
-color:var(--muted);
-font-size:11px}.muted{color:var(--muted)}.grid{display:grid;
-gap:13px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.card{transition:.2s}.card:hover{border-color:#3d6984;
-transform:translateY(-2px)}.card h3{font-size:14px;
-margin:8px 0 5px}.card p{font-size:11px;
-color:var(--muted);
-line-height:1.9;
-margin:0}.card-icon{width:40px;
-height:40px;
-border-radius:13px;
-background:#1a344b;
-color:var(--cyan);
-display:grid;
-place-items:center;
-font-size:20px}.tag{display:inline-flex;
-align-items:center;
-padding:4px 9px;
-border-radius:20px;
-font-size:10px;
-background:#243149;
-color:#b9c9df}.tag.wait{color:#f7ce77;
-background:#44371d}.tag.ready{color:#70e7a1;
-background:#183b32}.progress{height:7px;
-background:#243149;
-border-radius:10px;
-overflow:hidden;
-margin-top:12px}.progress span{height:100%;
-display:block;
-background:linear-gradient(90deg,var(--cyan),var(--blue));
-border-radius:10px}.topic-card{display:flex;
-flex-direction:column;
-gap:9px;
-min-height:160px}.topic-top{display:flex;
-justify-content:space-between;
-align-items:center}.topic-card .btn{margin-top:auto;
-align-self:flex-start;
-font-size:11px;
-padding:6px 11px}.notice{border:1px dashed #46617f;
-background:#132137;
-border-radius:14px;
-padding:14px 16px;
-color:#c5d4e8;
-font-size:12px;
-line-height:1.9}.notice strong{color:#70e7fa}.page{display:none}.page.active{display:block;
-animation:fade .25s ease}@keyframes fade{from{opacity:0;
-transform:translateY(5px)}to{opacity:1;
-transform:none}}.page-title{margin:8px 0 4px;
-font-size:26px}.page-sub{color:var(--muted);
-font-size:12px;
-margin:0 0 22px}.toolbar{display:flex;
-gap:9px;
-flex-wrap:wrap;
-margin-bottom:15px}.field{background:#0d1727;
-border:1px solid var(--line);
-color:var(--text);
-border-radius:11px;
-padding:10px 12px;
-outline:none;
-min-width:0}.field:focus{border-color:var(--cyan)}.search{flex:1;
-min-width:180px}.lesson-layout{display:grid;
-grid-template-columns:240px minmax(0,1fr);
-gap:15px}.lesson-list{align-self:start}.lesson-list button{width:100%;
-display:block;
-text-align:right;
-background:transparent;
-border:0;
-color:#b9c8dc;
-padding:10px;
-border-radius:10px;
-font-size:12px}.lesson-list button:hover,.lesson-list button.selected{background:#1b2d45;
-color:var(--cyan)}.lesson-content{min-height:350px}.lesson-content h3{margin-top:0}.empty-state{min-height:270px;
-display:grid;
-place-items:center;
-text-align:center;
-padding:25px}.empty-state .big{font-size:42px}.empty-state h3{margin:8px 0}.empty-state p{max-width:480px;
-color:var(--muted);
-font-size:12px;
-line-height:2}.formula-box{direction:ltr;
-text-align:center;
-background:#0a1423;
-border:1px solid #29415c;
-border-radius:13px;
-padding:18px;
-margin:13px 0;
-color:#8deeff;
-font-size:18px}.table{width:100%;
-border-collapse:collapse;
-font-size:12px}.table th,.table td{border-bottom:1px solid var(--line);
-padding:11px;
-text-align:right}.table th{color:#8ea5c2;
-font-weight:700}.quiz-option{display:block;
-width:100%;
-text-align:right;
-padding:12px;
-margin:8px 0;
-background:#111d2e;
-color:var(--text);
-border:1px solid var(--line);
-border-radius:11px}.quiz-option:hover{border-color:var(--cyan)}.quiz-option.correct{border-color:var(--green);
-background:#153329}.quiz-option.wrong{border-color:var(--red);
-background:#3a202a}.feedback{padding:12px;
-border-radius:10px;
-margin-top:12px;
-font-size:12px;
-line-height:1.8}.feedback.good{background:#143329;
-color:#9bf0c0}.feedback.bad{background:#3a202a;
-color:#ffb2c0}.calc{max-width:650px}.calc-display{width:100%;
-background:#08111e;
-border:1px solid var(--line);
-border-radius:14px;
-padding:18px;
-color:#9befff;
-font-size:23px;
-text-align:left;
-direction:ltr;
-margin-bottom:12px}.calc-grid{display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:8px}.calc-grid button{padding:13px 5px;
-border:1px solid var(--line);
-background:#17243a;
-color:var(--text);
-border-radius:10px}.calc-grid button:hover{border-color:var(--cyan)}.calc-grid button.op{color:var(--cyan)}.calc-grid button.equal{background:linear-gradient(110deg,#26bcd8,#6287ff);
-color:#06111e;
-font-weight:900}.note-area{width:100%;
-min-height:180px;
-resize:vertical;
-line-height:2}.toast{position:fixed;
-bottom:20px;
-left:20px;
-background:#1b3447;
-border:1px solid #39728b;
-color:#e9fbff;
-padding:11px 16px;
-border-radius:12px;
-box-shadow:var(--shadow);
-opacity:0;
-pointer-events:none;
-transition:.25s;
-z-index:20;
-font-size:12px}.toast.show{opacity:1}.footer{color:#637894;
-font-size:10px;
-text-align:center;
-margin-top:40px}.mobile-menu{display:none}
-@media(max-width:1000px){.grid.four{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.app{display:block}.sidebar{position:fixed;
-right:-285px;
-width:270px;
-transition:.25s;
-box-shadow:var(--shadow)}.sidebar.open{right:0}.mobile-menu{display:inline-grid}.main{padding:16px 14px 40px}.hero-stats{grid-template-columns:repeat(2,1fr)}.grid.two,.grid.three{grid-template-columns:1fr}.lesson-layout{grid-template-columns:1fr}.lesson-list{display:flex;
-overflow:auto;
-gap:5px}.lesson-list button{white-space:nowrap;
-width:auto}.topbar{margin-bottom:15px}.hero{border-radius:18px}.section-head{align-items:start}.page-title{font-size:22px}}
-@media(max-width:390px){.grid.four{grid-template-columns:1fr 1fr}.stat{padding:12px}.stat strong{font-size:21px}}
 
-/* Study redesign: clearer hierarchy, guided steps and math-first typography */
-.lesson-list{padding:12px;
-background:linear-gradient(160deg,#101d30,#0c1524)}
-.lesson-list button{display:flex;
-align-items:center;
-gap:10px;
-padding:12px 10px;
-border:1px solid transparent;
-font-weight:700;
-line-height:1.6}
-.lesson-list button .tab-number{direction:ltr;
-font:800 11px 'Cairo';
-color:#6b829f;
-background:#1b2c43;
-border-radius:8px;
-padding:4px 7px}
-.lesson-list button.selected{background:linear-gradient(100deg,#17364c,#172641);
-border-color:#31566e;
-color:#83efff;
-box-shadow:inset -3px 0 var(--cyan)}
-.lesson-list button.finish-lesson{margin-top:12px;
-justify-content:center;
-background:#12382f;
-color:#8cf0b9;
-border-color:#28634e}
-.lesson-content{padding:clamp(18px,3vw,30px);
-line-height:2.1}
-.lesson-content h3{font-size:clamp(17px,2vw,21px);
-color:#8cecff;
-margin:8px 0 12px}
-.lesson-content p,.lesson-content li{font-size:14px;
-line-height:2.15;
-color:#d1dced}
+<style>
+/* ============================================================
+   THÉMES — 8 ثيمات متناسقة
+   ============================================================ */
+:root{
+  --bg:#080d19; --panel:#101827; --panel2:#141f32; --panel3:#1a2940;
+  --line:#26364f; --text:#edf4ff; --muted:#94a6c2;
+  --cyan:#42d9f5; --blue:#668cff; --purple:#a78bfa;
+  --green:#4ade80; --amber:#fbbf24; --red:#fb7185;
+  --accent:#42d9f5; --accent2:#668cff;
+  --shadow:0 18px 55px #0005;
+  --radius:16px; --radius-sm:11px;
+  --tr:.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* Theme: light */
+body.th-light{--bg:#f2f6fc;--panel:#fff;--panel2:#edf3fa;--panel3:#e4edf7;--line:#d3deeb;--text:#172438;--muted:#61728a;--shadow:0 12px 35px #0a1a3a14;--accent:#0891b2;--accent2:#4f46e5}
+body.th-light .sidebar{background:#ffffffed}
+body.th-light .hero{background:linear-gradient(115deg,#dceeff,#e9edff)}
+body.th-light .hero p{color:#42536a}
+
+/* Theme: midnight */
+body.th-midnight{--bg:#030712;--panel:#0b1220;--panel2:#101a2c;--panel3:#17243a;--line:#243653;--text:#e6f0ff;--muted:#879bb8;--accent:#38bdf8;--accent2:#818cf8}
+
+/* Theme: emerald */
+body.th-emerald{--bg:#031612;--panel:#0a201c;--panel2:#0f2a24;--panel3:#133630;--line:#1f4a40;--text:#e7fff5;--muted:#8fb5a8;--accent:#34d399;--accent2:#10b981;--cyan:#34d399;--blue:#10b981}
+
+/* Theme: royal (أزرق ملكي) */
+body.th-royal{--bg:#0a0618;--panel:#150c2e;--panel2:#1c1140;--panel3:#241650;--line:#3a2470;--text:#f0ebff;--muted:#a99bd0;--accent:#a78bfa;--accent2:#c084fc;--cyan:#a78bfa;--blue:#818cf8}
+
+/* Theme: sunset (غروب) */
+body.th-sunset{--bg:#1a0a0a;--panel:#2a1010;--panel2:#361616;--panel3:#431c1c;--line:#5c2a2a;--text:#ffefe6;--muted:#c9a596;--accent:#fb923c;--accent2:#f43f5e;--cyan:#fb923c;--blue:#f43f5e}
+
+/* Theme: rose (وردي) */
+body.th-rose{--bg:#1a0714;--panel:#2a0e20;--panel2:#36142a;--panel3:#431a36;--line:#5c2a48;--text:#ffe6f2;--muted:#d09bb5;--accent:#f472b6;--accent2:#e879f9;--cyan:#f472b6;--blue:#e879f9}
+
+/* Theme: ocean (محيطي) */
+body.th-ocean{--bg:#031425;--panel:#082038;--panel2:#0c2a48;--panel3:#103558;--line:#1d4a70;--text:#e0f2ff;--muted:#8ab0cc;--accent:#22d3ee;--accent2:#3b82f6;--cyan:#22d3ee;--blue:#3b82f6}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:radial-gradient(ellipse at 15% 0%, color-mix(in srgb,var(--accent) 12%, transparent) 0, transparent 38%), var(--bg);
+  color:var(--text);
+  font-family:'Cairo',sans-serif;
+  min-height:100vh;
+  transition:background .4s,color .3s;
+  -webkit-tap-highlight-color:transparent;
+}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+a{color:var(--accent)}
+::selection{background:color-mix(in srgb,var(--accent) 35%,transparent)}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.app{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:100vh}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar{
+  height:100vh;position:sticky;top:0;padding:24px 17px;
+  border-left:1px solid var(--line);
+  background:color-mix(in srgb,var(--panel) 94%,transparent);
+  backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;z-index:15;
+  transition:transform var(--tr);
+}
+.brand{display:flex;align-items:center;gap:12px;padding:4px 8px 25px;cursor:pointer}
+.brand-mark{
+  width:44px;height:44px;border-radius:14px;
+  background:linear-gradient(140deg,var(--accent),var(--accent2));
+  display:grid;place-items:center;color:#06111e;font-size:23px;font-weight:900;
+  box-shadow:0 8px 24px color-mix(in srgb,var(--accent) 35%,transparent);
+  transition:transform var(--tr);
+}
+.brand:hover .brand-mark{transform:rotate(-8deg) scale(1.05)}
+.brand strong{font-size:18px;letter-spacing:.4px}
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.6px;direction:ltr;text-align:right}
+
+.nav-label{font-size:10px;color:var(--muted);font-weight:800;padding:10px 13px 7px;letter-spacing:.5px}
+.nav{display:grid;gap:5px}
+.nav button{
+  border:1px solid transparent;color:var(--muted);background:transparent;
+  text-align:right;padding:10px 13px;border-radius:12px;
+  display:flex;align-items:center;gap:12px;font-size:13px;
+  transition:all var(--tr);position:relative;
+}
+.nav button:hover{background:color-mix(in srgb,var(--accent) 8%,transparent);color:var(--text);transform:translateX(-2px)}
+.nav button.active{
+  background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 18%,transparent),color-mix(in srgb,var(--accent2) 12%,transparent));
+  border-color:color-mix(in srgb,var(--accent) 35%,transparent);
+  color:var(--accent);
+  box-shadow:inset -3px 0 var(--accent);
+}
+.nav .ico{width:20px;text-align:center;font-size:16px}
+
+.side-bottom{margin-top:auto}
+.profile{
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);padding:13px;border-radius:15px;
+  display:flex;gap:10px;align-items:center;cursor:pointer;
+  transition:border-color var(--tr);
+}
+.profile:hover{border-color:var(--accent)}
+.avatar{
+  width:37px;height:37px;border-radius:12px;
+  background:color-mix(in srgb,var(--accent) 22%,var(--panel3));
+  color:var(--accent);display:grid;place-items:center;font-weight:900;
+}
+.profile b{font-size:12px}
+.profile small{display:block;color:var(--muted);font-size:10px}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.main{min-width:0;padding:24px clamp(16px,3vw,42px) 60px;max-width:1600px;width:100%;margin:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:25px}
+.crumb{color:var(--muted);font-size:12px}
+.crumb b{color:var(--text)}
+.top-actions{display:flex;gap:9px;align-items:center}
+
+.icon-btn,.btn{
+  border:1px solid var(--line);background:var(--panel);color:var(--text);
+  border-radius:var(--radius-sm);padding:9px 13px;
+  transition:all var(--tr);
+}
+.icon-btn{width:40px;height:40px;padding:0;font-size:17px;display:inline-grid;place-items:center}
+.btn.primary{
+  background:linear-gradient(110deg,var(--accent),var(--accent2));
+  border:0;color:#06111e;font-weight:800;
+}
+.btn:hover,.icon-btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary:hover{box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btn:active{transform:scale(.97)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line));
+  border-radius:23px;padding:clamp(22px,4vw,38px);
+  background:linear-gradient(115deg,color-mix(in srgb,var(--accent) 10%,var(--panel)) 0%,var(--panel2) 54%,var(--panel) 100%);
+  box-shadow:var(--shadow);margin-bottom:22px;
+}
+.hero:after{
+  content:"∫";position:absolute;left:7%;top:-65px;
+  font:230px Georgia;color:color-mix(in srgb,var(--accent) 12%,transparent);
+  transform:rotate(-13deg);pointer-events:none;
+}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:1px}
+.hero h1{font-size:clamp(25px,4vw,39px);line-height:1.45;margin:12px 0 7px;font-weight:900}
+.hero p{color:var(--muted);max-width:680px;font-size:13px;line-height:2;margin:0 0 20px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
+
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 26px}
+.stat,.card{
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:17px;padding:17px;
+  transition:all var(--tr);
+}
+.stat:hover,.card:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));transform:translateY(-2px)}
+.stat small{color:var(--muted);font-size:11px}
+.stat strong{display:block;font-size:25px;margin-top:3px;color:var(--accent)}
+.stat .unit{font-size:11px;color:var(--muted);font-weight:500}
+
+/* ============================================================
+   SECTION
+   ============================================================ */
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:25px 0 13px}
+.section-head h2{font-size:18px;margin:0}
+.section-head p{margin:3px 0 0;color:var(--muted);font-size:11px}
+.muted{color:var(--muted)}
+
+.grid{display:grid;gap:13px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+.card h3{font-size:14px;margin:8px 0 5px}
+.card p{font-size:11px;color:var(--muted);line-height:1.9;margin:0}
+.card-icon{
+  width:40px;height:40px;border-radius:13px;
+  background:color-mix(in srgb,var(--accent) 18%,var(--panel3));
+  color:var(--accent);display:grid;place-items:center;font-size:20px;
+}
+
+.tag{display:inline-flex;align-items:center;padding:4px 9px;border-radius:20px;font-size:10px;background:var(--panel3);color:var(--muted)}
+.tag.wait{color:#f7ce77;background:#44371d}
+.tag.ready{color:#70e7a1;background:#183b32}
+
+.progress{height:7px;background:var(--panel3);border-radius:10px;overflow:hidden;margin-top:12px}
+.progress span{height:100%;display:block;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:10px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+
+/* ============================================================
+   TOPIC CARD
+   ============================================================ */
+.topic-card{display:flex;flex-direction:column;gap:9px;min-height:160px}
+.topic-top{display:flex;justify-content:space-between;align-items:center}
+.topic-card .btn{margin-top:auto;align-self:flex-start;font-size:11px;padding:6px 11px}
+
+.notice{
+  border:1px dashed color-mix(in srgb,var(--accent) 40%,var(--line));
+  background:color-mix(in srgb,var(--accent) 6%,var(--panel));
+  border-radius:14px;padding:14px 16px;color:var(--text);
+  font-size:12px;line-height:1.9;
+}
+.notice strong{color:var(--accent)}
+
+/* ============================================================
+   PAGES + ANIMATION
+   ============================================================ */
+.page{display:none}
+.page.active{display:block;animation:pageIn .35s cubic-bezier(.4,0,.2,1)}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(.85);opacity:0}70%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+
+/* stagger animation for cards */
+.card,.stat,.topic-card{animation:slideUp .45s cubic-bezier(.4,0,.2,1) backwards}
+.card:nth-child(1),.stat:nth-child(1){animation-delay:.02s}
+.card:nth-child(2),.stat:nth-child(2){animation-delay:.05s}
+.card:nth-child(3),.stat:nth-child(3){animation-delay:.08s}
+.card:nth-child(4),.stat:nth-child(4){animation-delay:.11s}
+.card:nth-child(5),.stat:nth-child(5){animation-delay:.14s}
+.card:nth-child(6),.stat:nth-child(6){animation-delay:.17s}
+
+.page-title{margin:8px 0 4px;font-size:26px}
+.page-sub{color:var(--muted);font-size:12px;margin:0 0 22px;line-height:1.9}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:15px}
+.field{
+  background:color-mix(in srgb,var(--panel) 80%,#000 20%);
+  border:1px solid var(--line);color:var(--text);
+  border-radius:var(--radius-sm);padding:10px 12px;
+  outline:none;min-width:0;transition:border-color var(--tr);
+}
+body.th-light .field{background:#fff}
+.field:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.search{flex:1;min-width:180px}
+
+/* ============================================================
+   LESSON LAYOUT
+   ============================================================ */
+.lesson-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:15px}
+.lesson-list{
+  align-self:start;padding:12px;
+  background:linear-gradient(160deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:var(--radius);
+}
+.lesson-list button{
+  width:100%;display:flex;align-items:center;gap:10px;
+  text-align:right;background:transparent;border:1px solid transparent;
+  color:var(--muted);padding:12px 10px;border-radius:10px;
+  font-size:12px;font-weight:700;line-height:1.6;
+  transition:all var(--tr);
+}
+.lesson-list button:hover{background:color-mix(in srgb,var(--accent) 8%,transparent);color:var(--accent)}
+.lesson-list button.selected{
+  background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 15%,transparent),transparent);
+  border-color:color-mix(in srgb,var(--accent) 30%,transparent);
+  color:var(--accent);box-shadow:inset -3px 0 var(--accent);
+}
+.lesson-list button .tab-number{
+  direction:ltr;font:800 11px 'Cairo';color:var(--muted);
+  background:var(--panel3);border-radius:8px;padding:4px 7px;min-width:28px;text-align:center;
+}
+
+.lesson-content{min-height:350px;padding:clamp(18px,3vw,30px);line-height:2.1}
+.lesson-content h3{font-size:clamp(17px,2vw,21px);color:var(--accent);margin:8px 0 12px}
+.lesson-content p,.lesson-content li{font-size:14px;line-height:2.15;color:var(--text)}
 .lesson-content ol,.lesson-content ul{padding-right:24px}
 .lesson-content li{padding:3px 0}
-.lesson-content .formula-box{font-size:clamp(17px,2.3vw,22px);
-padding:17px 12px;
-margin:16px 0;
-background:linear-gradient(120deg,#0a1727,#101f32);
-border-color:#31506e;
-color:#b4f4ff;
-overflow-x:auto}
-.lesson-kicker{display:flex;
-justify-content:space-between;
-gap:10px;
-align-items:center;
-color:#6ce7f5;
-font-size:10px;
-font-weight:900;
-letter-spacing:1.1px;
-border-bottom:1px solid var(--line);
-padding-bottom:12px;
-margin-bottom:20px}
-.lesson-kicker span{letter-spacing:0;
-color:var(--muted);
-font-weight:600}
-.lesson-controls{display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-border-top:1px solid var(--line);
-padding-top:18px;
-margin-top:28px}
-.lesson-dots{display:flex;
-gap:6px;
-justify-content:center;
-flex-wrap:wrap}
-.lesson-dots button{width:8px;
-height:8px;
-border:0;
-border-radius:20px;
-background:#3a4b64;
-padding:0}
-.lesson-dots button.on{width:23px;
-background:var(--cyan)}
-.practice-reveal{background:#12263a;
-border:1px solid #31506e;
-border-radius:12px;
-padding:13px 16px;
-margin:15px 0}
-.practice-reveal summary{cursor:pointer;
-color:#8cecff;
-font-weight:800}
-.lesson-content .notice{margin:14px 0}
-@media(max-width:760px){.lesson-list{display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
-overflow:visible}.lesson-list button{white-space:normal;
-width:auto;
-font-size:11px}.lesson-list button.finish-lesson{grid-column:1/-1}.lesson-controls .btn{font-size:11px;
-padding:8px}.lesson-dots{max-width:90px}}
+.lesson-content .formula-box{
+  font-size:clamp(17px,2.3vw,22px);padding:17px 12px;margin:16px 0;
+  background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 8%,var(--panel)),var(--panel2));
+  border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line));
+  border-radius:13px;color:var(--accent);
+  overflow-x:auto;direction:ltr;text-align:center;unicode-bidi:isolate;
+}
 
+.lesson-kicker{
+  display:flex;justify-content:space-between;gap:10px;align-items:center;
+  color:var(--accent);font-size:10px;font-weight:900;letter-spacing:1.1px;
+  border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:20px;
+}
+.lesson-kicker span{letter-spacing:0;color:var(--muted);font-weight:600}
 
-/* ALAMBRATOR Academy v4 interface refinements */
-.brand,.profile{cursor:pointer}.motivation-overlay{position:fixed;inset:0;background:#020817d9;backdrop-filter:blur(8px);z-index:100;display:grid;place-items:center;padding:18px}.motivation-overlay[hidden]{display:none}.motivation-dialog{position:relative;width:min(620px,100%);padding:30px;border:1px solid #37617d;border-radius:22px;background:linear-gradient(145deg,#14243a,#0b1424);box-shadow:0 25px 90px #0009}.motivation-close{position:absolute;left:16px;top:16px}.motivation-dialog h2{font-size:23px;margin:14px 0;color:#8cecff}.motivation-text{font-size:16px;line-height:2.2;color:#d8e7fa;min-height:110px}.motivation-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.lesson-controls{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid var(--line);padding-top:18px;margin-top:28px;
+}
+.lesson-dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.lesson-dots button{
+  width:8px;height:8px;border:0;border-radius:20px;
+  background:var(--line);padding:0;transition:all var(--tr);
+}
+.lesson-dots button.on{width:23px;background:var(--accent)}
 
-#themeBtn,#exportTop{display:none!important}
-#page-progress{display:none!important}
-#page-home .hero{margin-bottom:18px}
-#page-home .hero-stats{margin-top:0}
-#page-home .hero-actions{position:relative;z-index:1}
-.active-lesson-title{font-size:19px;color:var(--cyan);margin:0 0 15px;padding:12px 15px;border:1px solid var(--line);border-radius:13px;background:var(--panel)}
-.lesson-final-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
-.lesson-test{margin-top:18px;padding:18px;border:1px solid #31506e;border-radius:15px;background:#101d30}
-.lesson-test .quiz-option{font-size:13px}
-.test-catalog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:15px 0}
-.test-card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:15px}
-.test-card h3{margin:0 0 6px;font-size:14px}
-.test-card p{color:var(--muted);font-size:11px;line-height:1.8}
-.law-category{grid-column:1/-1;margin:16px 0 0;color:var(--cyan);font-size:16px;border-bottom:1px solid var(--line);padding-bottom:8px}
-.formula-box{direction:ltr;text-align:center;unicode-bidi:isolate}
-body.light{--bg:#f2f6fc;--panel:#fff;--panel2:#edf3fa;--panel3:#e4edf7;--line:#d3deeb;--text:#172438;--muted:#61728a;background:#f2f6fc;color:#172438}
-body.light .sidebar{background:#ffffffed}body.light .hero{background:linear-gradient(115deg,#dceeff,#e9edff)}body.light .hero p{color:#42536a}body.light .card,body.light .stat{background:#fff}body.light .lesson-content p,body.light .lesson-content li{color:#26374d}body.light .formula-box{background:#edf5ff;color:#153c62}
-body.midnight{--bg:#030712;--panel:#0b1220;--panel2:#101a2c;--panel3:#17243a;--line:#243653;--text:#e6f0ff;--muted:#879bb8}
-body.font-tajawal{font-family:'Tajawal',sans-serif}body.font-almarai{font-family:'Almarai',sans-serif}body.font-system{font-family:system-ui,sans-serif}
-@media(max-width:760px){.test-catalog{grid-template-columns:1fr 1fr}.active-lesson-title{font-size:16px}}
-@media(max-width:430px){.test-catalog{grid-template-columns:1fr}}
+.practice-reveal{
+  background:color-mix(in srgb,var(--accent) 8%,var(--panel2));
+  border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));
+  border-radius:12px;padding:13px 16px;margin:15px 0;
+}
+.practice-reveal summary{cursor:pointer;color:var(--accent);font-weight:800}
 
+.empty-state{min-height:270px;display:grid;place-items:center;text-align:center;padding:25px}
+.empty-state .big{font-size:42px;animation:pop .5s}
+.empty-state h3{margin:8px 0}
+.empty-state p{max-width:480px;color:var(--muted);font-size:12px;line-height:2}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+.table{width:100%;border-collapse:collapse;font-size:12px}
+.table th,.table td{border-bottom:1px solid var(--line);padding:11px;text-align:right}
+.table th{color:var(--muted);font-weight:700}
+
+/* ============================================================
+   QUIZ — عرض رياضي بالماثجاكس
+   ============================================================ */
+.quiz-option{
+  display:block;width:100%;text-align:right;padding:14px 16px;margin:8px 0;
+  background:color-mix(in srgb,var(--accent) 4%,var(--panel));
+  color:var(--text);border:1px solid var(--line);border-radius:12px;
+  transition:all var(--tr);font-size:14px;line-height:1.8;
+}
+.quiz-option:hover{border-color:var(--accent);transform:translateX(-3px)}
+.quiz-option.correct{border-color:var(--green);background:#153329;color:#a7f3d0;animation:pop .35s}
+.quiz-option.wrong{border-color:var(--red);background:#3a202a;color:#fecdd3;animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+.feedback{padding:12px 14px;border-radius:10px;margin-top:12px;font-size:13px;line-height:1.9}
+.feedback.good{background:#143329;color:#9bf0c0;border:1px solid #2a6b4a}
+.feedback.bad{background:#3a202a;color:#ffb2c0;border:1px solid #7a3348}
+
+/* ============================================================
+   CALCULATOR
+   ============================================================ */
+.calc{max-width:850px}
+.calc-display{
+  width:100%;
+  background:color-mix(in srgb,var(--panel) 60%,#000);
+  border:1px solid var(--line);border-radius:14px;
+  padding:18px;color:var(--accent);font-size:23px;
+  text-align:left;direction:ltr;margin-bottom:12px;
+  font-family:'Cairo',monospace;
+  transition:border-color var(--tr);
+}
+.calc-display:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+body.th-light .calc-display{background:#f6faff;color:#0e7490}
+
+.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.calc-grid button{
+  padding:14px 5px;border:1px solid var(--line);
+  background:var(--panel2);color:var(--text);
+  border-radius:10px;font-size:16px;font-weight:600;
+  transition:all var(--tr);
+}
+.calc-grid button:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px color-mix(in srgb,var(--accent) 20%,transparent)}
+.calc-grid button:active{transform:scale(.95)}
+.calc-grid button.op{color:var(--accent);font-weight:800}
+.calc-grid button.equal{
+  background:linear-gradient(110deg,var(--accent),var(--accent2));
+  color:#06111e;font-weight:900;grid-column:span 4;font-size:16px;
+}
+
+/* ============================================================
+   NOTES
+   ============================================================ */
+.note-area{width:100%;min-height:180px;resize:vertical;line-height:2}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast{
+  position:fixed;bottom:20px;left:20px;
+  background:color-mix(in srgb,var(--accent) 25%,var(--panel));
+  border:1px solid var(--accent);color:var(--text);
+  padding:12px 18px;border-radius:12px;
+  box-shadow:var(--shadow);opacity:0;pointer-events:none;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  z-index:50;font-size:13px;font-weight:600;
+  transform:translateY(20px);
+}
+.toast.show{opacity:1;transform:none}
+
+/* ============================================================
+   MOTIVATION MODAL
+   ============================================================ */
+.motivation-overlay{
+  position:fixed;inset:0;background:#020817d9;backdrop-filter:blur(8px);
+  z-index:100;display:grid;place-items:center;padding:18px;
+  animation:fadeIn .25s;
+}
+.motivation-overlay[hidden]{display:none}
+.motivation-dialog{
+  position:relative;width:min(620px,100%);padding:30px;
+  border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line));
+  border-radius:22px;
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  box-shadow:0 25px 90px #0009;
+  animation:pop .35s;
+}
+.motivation-close{position:absolute;left:16px;top:16px}
+.motivation-dialog h2{font-size:23px;margin:14px 0;color:var(--accent)}
+.motivation-text{font-size:16px;line-height:2.2;color:var(--text);min-height:110px}
+.motivation-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{color:var(--muted);font-size:10px;text-align:center;margin-top:40px;letter-spacing:.5px}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+.mobile-menu{display:none}
+@media(max-width:1000px){
+  .grid.four{grid-template-columns:repeat(2,1fr)}
+  .grid.three{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .app{display:block}
+  .sidebar{position:fixed;right:-285px;width:270px;transition:transform var(--tr)}
+  .sidebar.open{right:0;box-shadow:-10px 0 40px #0006}
+  .mobile-menu{display:inline-grid}
+  .main{padding:16px 14px 40px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .grid.two,.grid.three{grid-template-columns:1fr}
+  .lesson-layout{grid-template-columns:1fr}
+  .lesson-list{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:5px;overflow:visible;
+  }
+  .lesson-list button{white-space:normal;width:auto;font-size:11px}
+  .topbar{margin-bottom:15px}
+  .hero{border-radius:18px}
+  .page-title{font-size:22px}
+  .test-catalog{grid-template-columns:1fr 1fr}
+}
+@media(max-width:430px){
+  .test-catalog{grid-template-columns:1fr}
+  .grid.four{grid-template-columns:1fr 1fr}
+  .stat{padding:12px}
+  .stat strong{font-size:21px}
+}
+
+/* ============================================================
+   FONT CLASSES — 12 خط
+   ============================================================ */
+body.f-Cairo{font-family:'Cairo',sans-serif}
+body.f-Tajawal{font-family:'Tajawal',sans-serif}
+body.f-Almarai{font-family:'Almarai',sans-serif}
+body.f-Amiri{font-family:'Amiri',serif}
+body.f-Lateef{font-family:'Lateef',serif}
+body.f-Scheherazade{font-family:'Scheherazade New',serif}
+body.f-ReemKufi{font-family:'Reem Kufi',sans-serif}
+body.f-ElMessiri{font-family:'El Messiri',sans-serif}
+body.f-Markazi{font-family:'Markazi Text',serif}
+body.f-NotoKufi{font-family:'Noto Kufi Arabic',sans-serif}
+body.f-IBMPlex{font-family:'IBM Plex Sans Arabic',sans-serif}
+body.f-Readex{font-family:'Readex Pro',sans-serif}
+body.f-system{font-family:system-ui,-apple-system,sans-serif}
+
+/* hide legacy unused */
+#themeBtn,#exportTop,#page-progress{display:none!important}
+/* ============================================================
+   LESSON END PANEL + LESSON QUIZ
+   ============================================================ */
+.lesson-end-panel{
+  margin-top:24px;
+  padding:22px;
+  border:1px dashed color-mix(in srgb,var(--accent) 45%,var(--line));
+  border-radius:16px;
+  background:color-mix(in srgb,var(--accent) 6%,var(--panel));
+  text-align:center;
+  animation:slideUp .4s cubic-bezier(.4,0,.2,1);
+}
+.lesson-end-panel .end-icon{
+  font-size:44px;
+  margin-bottom:6px;
+  animation:pop .5s;
+}
+.lesson-end-panel h3{
+  font-size:19px;
+  margin:6px 0 4px;
+  color:var(--accent);
+}
+.lesson-end-panel p{
+  font-size:13px;
+  line-height:1.9;
+  margin:4px 0;
+}
+.lesson-end-panel .end-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:14px;
+}
+.lesson-end-panel .end-actions .btn{
+  font-size:12px;
+  padding:9px 14px;
+}
+
+.quiz-progress{
+  height:6px;
+  background:var(--panel3);
+  border-radius:10px;
+  overflow:hidden;
+  margin:8px 0 6px;
+}
+.quiz-progress-bar{
+  height:100%;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border-radius:10px;
+  transition:width .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* موبايل */
+@media(max-width:760px){
+  .lesson-end-panel .end-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .lesson-end-panel .end-actions .btn{
+    width:100%;
+    font-size:12px;
+  }
+}
+/* ============================================================
+   VIDEOS SECTION
+   ============================================================ */
+.video-toolbar{
+  display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px;align-items:center;
+}
+.video-toolbar .search{flex:1;min-width:180px}
+.video-toolbar .btn.primary{text-decoration:none;white-space:nowrap}
+
+.video-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+}
+
+.video-card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:all var(--tr);
+  animation:slideUp .4s cubic-bezier(.4,0,.2,1) backwards;
+}
+.video-card:hover{
+  border-color:var(--accent);
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px color-mix(in srgb,var(--accent) 15%,transparent);
+}
+
+.video-thumb{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:#000;
+  cursor:pointer;
+}
+.video-thumb img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .4s;
+}
+.video-card:hover .video-thumb img{transform:scale(1.06)}
+.video-thumb .play-overlay{
+  position:absolute;inset:0;
+  display:grid;place-items:center;
+  background:linear-gradient(180deg,transparent 40%,#0008 100%);
+  opacity:.85;
+  transition:opacity var(--tr);
+}
+.video-card:hover .video-thumb .play-overlay{opacity:1}
+.play-btn{
+  width:56px;height:56px;border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 90%,transparent);
+  color:#06111e;
+  display:grid;place-items:center;
+  font-size:22px;
+  box-shadow:0 8px 24px #0006;
+  transition:transform var(--tr);
+}
+.video-card:hover .play-btn{transform:scale(1.1)}
+.video-index{
+  position:absolute;top:8px;right:8px;
+  background:#000a;color:#fff;
+  font-size:11px;font-weight:800;
+  padding:3px 8px;border-radius:20px;
+  direction:ltr;
+}
+
+.video-body{
+  padding:13px 15px 15px;
+  display:flex;flex-direction:column;gap:7px;
+  flex:1;
+}
+.video-body h3{
+  font-size:14px;margin:0;line-height:1.55;
+  color:var(--text);
+}
+.video-body .video-type{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:800;
+  padding:3px 9px;border-radius:20px;
+  background:color-mix(in srgb,var(--accent) 15%,var(--panel3));
+  color:var(--accent);
+  align-self:flex-start;
+}
+.video-body p{
+  font-size:11.5px;color:var(--muted);
+  line-height:1.85;margin:0;
+  flex:1;
+}
+.video-actions{
+  display:flex;gap:7px;margin-top:4px;
+}
+.video-actions .btn{
+  flex:1;font-size:11px;padding:7px 10px;
+  text-align:center;text-decoration:none;
+}
+
+/* ============================================================
+   VIDEO MODAL
+   ============================================================ */
+.video-modal{
+  position:fixed;inset:0;z-index:150;
+  background:#000c;backdrop-filter:blur(6px);
+  display:grid;place-items:center;padding:18px;
+  animation:fadeIn .25s;
+}
+.video-modal[hidden]{display:none}
+.video-modal-box{
+  width:min(900px,100%);
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 30px 100px #000a;
+  animation:pop .3s;
+}
+.video-modal-head{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;padding:14px 18px;
+  border-bottom:1px solid var(--line);
+}
+.video-modal-head h3{margin:0;font-size:15px;line-height:1.5}
+.video-modal-frame{
+  aspect-ratio:16/9;background:#000;
+}
+.video-modal-frame iframe{
+  width:100%;height:100%;border:0;display:block;
+}
+.video-modal-foot{
+  display:flex;gap:10px;justify-content:flex-end;
+  padding:12px 18px;border-top:1px solid var(--line);
+  flex-wrap:wrap;
+}
+.video-modal-foot .btn{text-decoration:none;font-size:12px}
+
+@media(max-width:760px){
+  .video-modal-box{border-radius:12px}
+  .video-modal-head h3{font-size:13px}
+  .video-list{grid-template-columns:1fr}
+}
 </style>
 </head>
-<body>
-<div class="app">
-<aside class="sidebar" id="sidebar">
-<div class="brand" role="button" tabindex="0" onclick="showMotivation()" onkeydown="if(event.key==='Enter')showMotivation()" title="افتح رسائل التشجيع">
-<div class="brand-mark">∑</div>
-<div>
-<strong>MATH MASTER</strong>
-<small>ALAMBRATOR ACADEMY</small>
-</div>
-</div>
-<div class="nav-label">مساحة التعلم</div>
-<nav class="nav" id="nav">
-<button class="active" data-page="home">
-<span class="ico">⌂</span>الرئيسية</button>
-<button data-page="lessons">
-<span class="ico">▤</span>خريطة المنهج</button>
-<button data-page="study">
-<span class="ico">◈</span>غرفة المذاكرة</button>
-<button data-page="practice">
-<span class="ico">✎</span>التدريبات والاختبارات</button>
-<button data-page="laws">
-<span class="ico">∑</span>مكتبة القوانين</button>
-<button data-page="calculator">
-<span class="ico">▦</span>الآلة الحاسبة</button>
-<div class="nav-label">أدواتي</div>
-<button data-page="videos">
-<span class="ico">▷</span>فيديوهات الشرح</button>
-<button data-page="notes">
-<span class="ico">▧</span>ملاحظاتي</button>
 
-<button data-page="settings">
-<span class="ico">⚙</span>الإعدادات</button>
-</nav>
-<div class="side-bottom">
-<div class="profile" role="button" tabindex="0" onclick="showMotivation()" title="رسائل تحفيزية">
-<div class="avatar">A</div>
-<div>
-<b>ALAMBRATOR</b>
-<small>رحلة إتقان الرياضيات · اضغط للتشجيع</small>
-</div>
-</div>
-</div>
+<body class="th-dark f-Cairo">
+
+<!-- ============ APP ============ -->
+<div class="app">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+  <div class="brand" role="button" tabindex="0" onclick="showMotivation()" onkeydown="if(event.key==='Enter')showMotivation()">
+    <div class="brand-mark">∑</div>
+    <div>
+      <strong>MATH MASTER</strong>
+      <small>ALAMBRATOR ACADEMY</small>
+    </div>
+  </div>
+
+  <div class="nav-label">مساحة التعلم</div>
+  <nav class="nav" id="nav">
+    <button class="active" data-page="home"><span class="ico">⌂</span>الرئيسية</button>
+    <button data-page="lessons"><span class="ico">▤</span>خريطة المنهج</button>
+    <button data-page="study"><span class="ico">◈</span>غرفة المذاكرة</button>
+    <button data-page="practice"><span class="ico">✎</span>التدريبات والاختبارات</button>
+    <button data-page="laws"><span class="ico">∑</span>مكتبة القوانين</button>
+    <button data-page="calculator"><span class="ico">▦</span>الآلة الحاسبة</button>
+    <div class="nav-label">أدواتي</div>
+    <button data-page="videos"><span class="ico">▷</span>فيديوهات الشرح</button>
+    <button data-page="notes"><span class="ico">▧</span>ملاحظاتي</button>
+    <button data-page="settings"><span class="ico">⚙</span>الإعدادات</button>
+  </nav>
+
+  <div class="side-bottom">
+    <div class="profile" role="button" tabindex="0" onclick="showMotivation()">
+      <div class="avatar">A</div>
+      <div><b>ALAMBRATOR</b><small>اضغط للتشجيع</small></div>
+    </div>
+  </div>
 </aside>
+
+<!-- ============ MAIN ============ -->
 <main class="main">
 <header class="topbar">
-<div style="display:flex;align-items:center;gap:10px">
-<button class="icon-btn mobile-menu" id="menuBtn">☰</button>
-<div class="crumb">مساحة التعلم / <b id="crumb">الرئيسية</b>
-</div>
-</div>
-<div class="top-actions">
-<button class="icon-btn" id="themeBtn" title="تغيير المظهر" aria-hidden="true" tabindex="-1">☼</button>
-<button class="btn ghost" id="exportTop" aria-hidden="true" tabindex="-1">⇩ تصدير التقدم</button>
-</div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button class="icon-btn mobile-menu" id="menuBtn" aria-label="القائمة">☰</button>
+    <div class="crumb">مساحة التعلم / <b id="crumb">الرئيسية</b></div>
+  </div>
+  <div class="top-actions">
+    <button class="icon-btn" id="quickTheme" title="تبديل الثيم السريع">◐</button>
+    <button class="icon-btn" id="fullscreenBtn2" title="ملء الشاشة">⛶</button>
+  </div>
 </header>
+
+<!-- HOME -->
 <section class="page active" id="page-home">
-<div class="hero">
-<div class="eyebrow">✦ YOUR PERSONAL MATH TUTOR</div>
-<h1>افهم الرياضيات،<br>
-<span style="color:#65e5f5">ولا تحفظ خطواتها فقط.</span>
-</h1>
-<p>كل جلسة مذاكرة تقرّبك خطوة من إتقان الرياضيات.</p>
-</div>
-<div class="hero-stats">
-<div class="stat">
-<small>موضوعات مرصودة</small>
-<strong id="topicCount">10</strong>
-<span class="unit">بابًا من المنهج</span>
-</div>
-<div class="stat">
-<small>دروس مكتملة</small>
-<strong id="doneCount">0</strong>
-<span class="unit">من الدروس المعتمدة</span>
-</div>
-<div class="stat">
-<small>اختبارات مكتملة</small>
-<strong id="quizCount">0</strong>
-<span class="unit">اختبار</span>
-</div>
-<div class="stat">
-<small>نسبة التقدم</small>
-<strong id="percentCount">0<span class="unit">%</span>
-</strong>
-<span class="unit">تقدمك المحفوظ</span>
-</div>
-</div>
-<div class="hero-actions" style="margin-top:18px">
-<button class="btn primary" onclick="showPage('lessons')">استكشف خريطة المنهج ←</button>
-<button class="btn" onclick="showPage('study')">افتح غرفة المذاكرة</button>
-</div>
-<div id="homeTopics" style="display:none"></div>
+  <div class="hero">
+    <div class="eyebrow">✦ YOUR PERSONAL MATH TUTOR</div>
+    <h1>افهم الرياضيات،<br><span style="color:var(--accent)">ولا تحفظ خطواتها فقط.</span></h1>
+    <p>كل جلسة مذاكرة تقرّبك خطوة من إتقان الرياضيات.</p>
+    <div class="hero-actions" style="margin-top:18px">
+      <button class="btn primary" onclick="showPage('lessons')">استكشف خريطة المنهج ←</button>
+      <button class="btn" onclick="showPage('study')">افتح غرفة المذاكرة</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><small>موضوعات</small><strong id="topicCount">0</strong><span class="unit">بابًا</span></div>
+    <div class="stat"><small>دروس مكتملة</small><strong id="doneCount">0</strong><span class="unit">درس</span></div>
+    <div class="stat"><small>اختبارات</small><strong id="quizCount">0</strong><span class="unit">اختبار</span></div>
+    <div class="stat"><small>نسبة التقدم</small><strong id="percentCount">0<span class="unit">%</span></strong><span class="unit">محفوظ</span></div>
+  </div>
 </section>
+
+<!-- LESSONS -->
 <section class="page" id="page-lessons">
-<h1 class="page-title">خريطة المنهج</h1>
-<p class="page-sub">هيكل مرن قابل للتوسع. ترتيب الموضوعات النهائي يعتمد على ترتيب محاضراتك.</p>
-<div class="toolbar">
-<input class="field search" id="topicSearch" placeholder="ابحث عن موضوع أو دالة...">
-<select class="field" id="topicFilter">
-<option value="all">كل الموضوعات</option>
-<option value="received">وردت في الملفات</option>
-<option value="mentioned">ذكرتها ولم تصل أوراقها بعد</option>
-</select>
-</div>
-<div class="grid two" id="allTopics">
-</div>
+  <h1 class="page-title">خريطة المنهج</h1>
+  <p class="page-sub">هيكل مرن قابل للتوسع. ترتيب الموضوعات النهائي يعتمد على ترتيب محاضراتك.</p>
+  <div class="toolbar">
+    <input class="field search" id="topicSearch" placeholder="ابحث عن موضوع أو دالة...">
+    <select class="field" id="topicFilter">
+      <option value="all">كل الموضوعات</option>
+      <option value="received">وردت في الملفات</option>
+      <option value="mentioned">ذكرت ولم تصل</option>
+    </select>
+  </div>
+  <div class="grid two" id="allTopics"></div>
 </section>
+
+<!-- STUDY -->
 <section class="page" id="page-study">
-<h1 class="page-title">غرفة المذاكرة</h1>
-<h2 id="activeLessonTitle" class="active-lesson-title">اختر درسًا للبدء</h2>
-<p class="page-sub">طريقة جديدة: تعرّف نوع السؤال أولًا، ثم اختر القانون، وبعدها شاهد كل خطوة وسببها قبل الانتقال للتدريب.</p>
-<div class="lesson-layout">
-<div class="card lesson-list" id="lessonTabs">
-</div>
-<div class="card lesson-content" id="lessonContent">
-<div class="empty-state">
-<div>
-<div class="big">📚</div>
-<h3>اختر موضوعًا من خريطة المنهج</h3>
-<p>ستظهر هنا المقدمة والقوانين والأمثلة والأخطاء الشائعة والملخص.</p>
-<button class="btn primary" onclick="showPage('lessons')">اختيار موضوع</button>
-</div>
-</div>
-</div>
-</div>
+  <h1 class="page-title">غرفة المذاكرة</h1>
+  <h2 id="activeLessonTitle" class="page-sub" style="color:var(--accent);font-weight:700">اختر درسًا للبدء</h2>
+  <p class="page-sub">تعرّف نوع السؤال أولًا، ثم اختر القانون، وشاهد كل خطوة وسببها.</p>
+  <div class="lesson-layout">
+    <div class="lesson-list" id="lessonTabs"></div>
+    <div class="card lesson-content" id="lessonContent">
+      <div class="empty-state">
+        <div>
+          <div class="big">📚</div>
+          <h3>اختر موضوعًا من خريطة المنهج</h3>
+          <p>ستظهر هنا المقدمة والقوانين والأمثلة والأخطاء الشائعة والملخص.</p>
+          <button class="btn primary" onclick="showPage('lessons')">اختيار موضوع</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+<!-- PRACTICE -->
 <section class="page" id="page-practice">
-<h1 class="page-title">التدريبات والاختبارات</h1>
-<p class="page-sub">أسئلة تدريبية على القواعد التي ظهرت في الأوراق، مع تصحيح فوري وسبب الإجابة وحفظ الأخطاء.</p>
-<div class="grid three">
-<div class="stat">
-<small>اختبارات مكتملة</small>
-<strong id="quizTotal">0</strong>
-</div>
-<div class="stat">
-<small>أسئلة أخطأت فيها</small>
-<strong id="errorTotal">0</strong>
-</div>
-<div class="stat">
-<small>نتيجة آخر اختبار</small>
-<strong id="lastScore">—</strong>
-</div>
-</div>
-<div id="testCatalog" class="test-catalog"></div>
-<div class="card" id="quizBox" style="margin-top:15px">
-<div class="topic-top">
-<span class="tag ready">تدريب تفاعلي</span>
-<span class="muted" id="quizProgress">السؤال 1</span>
-</div>
-<h3 id="quizQuestion" style="font-size:17px;line-height:2">اضغط ابدأ الاختبار</h3>
-<div id="quizOptions">
-</div>
-<div id="quizFeedback">
-</div>
-<div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:14px">
-<button class="btn primary" id="quizStart">ابدأ اختبارًا جديدًا</button>
-<button class="btn" id="quizNext" disabled>السؤال التالي</button>
-</div>
-</div>
-<div class="card" style="margin-top:14px">
-<h3>مراجعة أخطائك</h3>
-<div id="errorReview" class="muted">لم تسجل أخطاء بعد.</div>
-</div>
+  <h1 class="page-title">التدريبات والاختبارات</h1>
+  <p class="page-sub">أسئلة تدريبية بالرموز الرياضية، تصحيح فوري مع التفسير.</p>
+  <div class="grid three">
+    <div class="stat"><small>اختبارات مكتملة</small><strong id="quizTotal">0</strong></div>
+    <div class="stat"><small>أخطاء</small><strong id="errorTotal">0</strong></div>
+    <div class="stat"><small>آخر نتيجة</small><strong id="lastScore">—</strong></div>
+  </div>
+
+  <div class="card" id="quizBox" style="margin-top:15px">
+    <div class="topic-top">
+      <span class="tag ready">تدريب تفاعلي</span>
+      <span class="muted" id="quizProgress">السؤال 1</span>
+    </div>
+    <h3 id="quizQuestion" style="font-size:17px;line-height:2">اضغط ابدأ الاختبار</h3>
+    <div id="quizOptions"></div>
+    <div id="quizFeedback"></div>
+    <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:14px">
+      <button class="btn primary" id="quizStart">ابدأ اختبارًا جديدًا</button>
+      <button class="btn" id="quizNext" disabled>السؤال التالي</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>مراجعة أخطائك</h3>
+    <div id="errorReview" class="muted">لم تسجل أخطاء بعد.</div>
+  </div>
 </section>
+
+<!-- LAWS -->
 <section class="page" id="page-laws">
-<h1 class="page-title">مكتبة القوانين</h1>
-<p class="page-sub">ابحث بالعربية أو الإنجليزية أو باسم الدالة. كل قانون يظهر بصيغته الرياضية وشرح استخدامه. الرمز uₓ يعني مشتقة u بالنسبة إلى x.</p>
-<div class="toolbar">
-<input class="field search" id="lawSearch" placeholder="ابحث: قاعدة السلسلة، مشتقة الجيب، لوبيتال...">
-</div>
-<div class="grid two" id="lawList">
-</div>
+  <h1 class="page-title">مكتبة القوانين</h1>
+  <p class="page-sub">كل قانون بصيغته الرياضية وشرح استخدامه.</p>
+  <div class="toolbar">
+    <input class="field search" id="lawSearch" placeholder="ابحث بالعربية أو الإنجليزية...">
+  </div>
+  <div class="grid two" id="lawList"></div>
 </section>
+
+<!-- CALCULATOR -->
 <section class="page" id="page-calculator">
-<h1 class="page-title">الآلة الحاسبة الرياضية</h1>
-<p class="page-sub">اكتب التعبير الرياضي بصيغة مفهومة، واختر نوع العملية. اكتب المسألة بصيغة رياضية، واختر الاشتقاق أو المشتقة الثانية أو الحساب العددي. ستظهر الرموز كمعادلات منسقة لا كنص برمجي.</p>
-<div class="card calc" style="max-width:850px">
-<label class="muted" for="calcMode">نوع العملية</label>
-<select class="field" id="calcMode" style="width:100%;margin:7px 0 12px">
-<option value="eval">حساب تعبير رياضي</option>
-<option value="derivative">المشتقة الأولى رمزيًا</option>
-<option value="derivative2">المشتقة الثانية رمزيًا</option>
-<option value="derivative3">المشتقة الثالثة رمزيًا</option>
-<option value="integral">تكامل محدد عدديًا (سمبسون)</option>
-<option value="limit">نهاية عددية عند x = a</option>
-<option value="solve">حل معادلة f(x) = 0 عدديًا</option>
-</select>
-<label class="muted" for="calcDisplay">التعبير الرياضي</label>
-<input class="calc-display" id="calcDisplay" value="sin(x)^2+cos(x)^2" aria-label="التعبير الرياضي" style="width:100%;margin:7px 0 10px">
-<div class="grid two" style="margin-bottom:10px">
-<div>
-<label class="muted" for="calcA">قيمة x / بداية التكامل / نقطة النهاية</label>
-<input class="field" id="calcA" type="number" value="2" step="any" style="width:100%">
-</div>
-<div>
-<label class="muted" for="calcB">نهاية التكامل (إن لزم)</label>
-<input class="field" id="calcB" type="number" value="3" step="any" style="width:100%">
-</div>
-</div>
-<div class="toolbar">
-<button class="btn" data-insert="sin(x)">sin</button>
-<button class="btn" data-insert="cos(x)">cos</button>
-<button class="btn" data-insert="tan(x)">tan</button>
-<button class="btn" data-insert="asin(x)">sin⁻¹</button>
-<button class="btn" data-insert="acos(x)">cos⁻¹</button>
-<button class="btn" data-insert="atan(x)">tan⁻¹</button>
-<button class="btn" data-insert="sinh(x)">sinh</button>
-<button class="btn" data-insert="cosh(x)">cosh</button>
-<button class="btn" data-insert="tanh(x)">tanh</button>
-<button class="btn" data-insert="asinh(x)">sinh⁻¹</button>
-<button class="btn" data-insert="acosh(x)">cosh⁻¹</button>
-<button class="btn" data-insert="atanh(x)">tanh⁻¹</button>
-<button class="btn" data-insert="sqrt(x)">√</button>
-<button class="btn" data-insert="ln(x)">ln</button>
-<button class="btn" data-insert="e^x">eˣ</button>
-<button class="btn" data-insert="pi">π</button>
-<button class="btn" data-insert="^">xʸ</button>
-</div>
-<div class="calc-grid" id="calcKeys">
-<button data-insert="7">7</button>
-<button data-insert="8">8</button>
-<button data-insert="9">9</button>
-<button class="op" data-insert="/">÷</button>
-<button data-insert="4">4</button>
-<button data-insert="5">5</button>
-<button data-insert="6">6</button>
-<button class="op" data-insert="*">×</button>
-<button data-insert="1">1</button>
-<button data-insert="2">2</button>
-<button data-insert="3">3</button>
-<button class="op" data-insert="-">−</button>
-<button data-insert="0">0</button>
-<button data-insert=".">.</button>
-<button data-insert="(">(</button>
-<button data-insert=")">)</button>
-<button data-insert="x">x</button>
-<button data-insert="+">+</button>
-<button id="calcClear">مسح</button>
-<button id="calcBack">⌫</button>
-<button class="equal" id="calcEqual" style="grid-column:span 4">تنفيذ العملية</button>
-</div>
-<div id="calcResult" class="card" style="margin-top:14px;min-height:100px;direction:rtl">
-<span class="muted">ستظهر النتيجة وخطوات العملية هنا.</span>
-</div>
-</div>
-<div class="notice" style="margin-top:14px">
-<strong>حدود الدقة:</strong> الاشتقاق الرمزي يعتمد على محرك Math.js ويعرض المشتقة المبسطة مع تحديد قاعدة عامة، وليس برهانًا تفصيليًا لكل تحويل جبري. التكامل والنهايات وحل المعادلات هنا عددية وتقريبية؛ لا تدّعي الآلة حل كل تكامل أو نهاية أو معادلة رمزيًا. الزوايا في الدوال المثلثية بالراديان.</div>
+  <h1 class="page-title">الآلة الحاسبة الرياضية</h1>
+  <p class="page-sub">اكتب التعبير، واختر العملية. النتائج تظهر كمعادلات منسقة.</p>
+  <div class="card calc">
+    <label class="muted" for="calcMode">نوع العملية</label>
+    <select class="field" id="calcMode" style="width:100%;margin:7px 0 12px">
+      <option value="eval">حساب تعبير</option>
+      <option value="derivative">مشتقة أولى رمزية</option>
+      <option value="derivative2">مشتقة ثانية رمزية</option>
+      <option value="integral">تكامل محدد (سمبسون)</option>
+      <option value="limit">نهاية عددية</option>
+      <option value="solve">حل معادلة عدديًا</option>
+    </select>
+    <label class="muted" for="calcDisplay">التعبير الرياضي</label>
+    <input class="calc-display" id="calcDisplay" value="sin(x)^2+cos(x)^2">
+    <div class="grid two" style="margin-bottom:10px">
+      <div><label class="muted" for="calcA">قيمة x / بداية</label><input class="field" id="calcA" type="number" value="2" step="any" style="width:100%"></div>
+      <div><label class="muted" for="calcB">نهاية (للتكامل)</label><input class="field" id="calcB" type="number" value="3" step="any" style="width:100%"></div>
+    </div>
+    <div class="toolbar">
+      <button class="btn" data-insert="sin(x)">sin</button>
+      <button class="btn" data-insert="cos(x)">cos</button>
+      <button class="btn" data-insert="tan(x)">tan</button>
+      <button class="btn" data-insert="asin(x)">sin⁻¹</button>
+      <button class="btn" data-insert="acos(x)">cos⁻¹</button>
+      <button class="btn" data-insert="atan(x)">tan⁻¹</button>
+      <button class="btn" data-insert="sinh(x)">sinh</button>
+      <button class="btn" data-insert="cosh(x)">cosh</button>
+      <button class="btn" data-insert="tanh(x)">tanh</button>
+      <button class="btn" data-insert="sqrt(x)">√</button>
+      <button class="btn" data-insert="ln(x)">ln</button>
+      <button class="btn" data-insert="e^x">eˣ</button>
+      <button class="btn" data-insert="pi">π</button>
+    </div>
+    <div class="calc-grid" id="calcKeys">
+      <button data-insert="7">7</button><button data-insert="8">8</button><button data-insert="9">9</button><button class="op" data-insert="/">÷</button>
+      <button data-insert="4">4</button><button data-insert="5">5</button><button data-insert="6">6</button><button class="op" data-insert="*">×</button>
+      <button data-insert="1">1</button><button data-insert="2">2</button><button data-insert="3">3</button><button class="op" data-insert="-">−</button>
+      <button data-insert="0">0</button><button data-insert=".">.</button><button data-insert="(">(</button><button data-insert=")">)</button>
+      <button data-insert="x">x</button><button data-insert="+">+</button>
+      <button id="calcClear">مسح</button><button id="calcBack">⌫</button>
+      <button class="equal" id="calcEqual">تنفيذ العملية</button>
+    </div>
+    <div id="calcResult" class="card" style="margin-top:14px;min-height:100px">
+      <span class="muted">ستظهر النتيجة هنا.</span>
+    </div>
+  </div>
 </section>
+
+<!-- VIDEOS -->
 <section class="page" id="page-videos">
-<h1 class="page-title">فيديوهات الشرح</h1>
-<p class="page-sub">قائمة YouTube التي أرسلتها محفوظة كمصدر للمراجعة، وسيتم توزيع الفيديوهات على الدروس بعد فحص عناوينها ومحتواها.</p>
-<div class="card">
-<div class="card-icon">▷</div>
-<h3>قائمة تشغيل المحاضرات</h3>
-<p dir="ltr">PLYvBQARQqTs0xz4oojhdpYwoPEhmJujmM</p>
-<p style="margin:10px 0">
-<a href="https://youtube.com/playlist?list=PLYvBQARQqTs0xz4oojhdpYwoPEhmJujmM" target="_blank" rel="noopener" style="color:#68e5f5">فتح قائمة التشغيل على YouTube ↗</a>
-</p>
-<span class="tag ready">تم استلام الرابط</span>
-</div>
+  <h1 class="page-title">فيديوهات الشرح</h1>
+  <p class="page-sub">قائمة تشغيل المحاضرات مرتبة بالتسلسل مع وصف كل فيديو ونوع التفاضل الذي يشرحه.</p>
+
+  <div class="video-toolbar">
+    <input class="field search" id="videoSearch" placeholder="ابحث في عناوين الفيديوهات...">
+    <select class="field" id="videoFilter">
+      <option value="all">كل الأنواع</option>
+      <option value="basic">تفاضل أساسي</option>
+      <option value="trig">مثلثي</option>
+      <option value="inverse">مثلثي عكسي</option>
+      <option value="chain">قاعدة السلسلة</option>
+      <option value="logexp">أسّي ولوغاريتمي</option>
+      <option value="hyper">زائدي</option>
+      <option value="implicit">ضمني</option>
+      <option value="parametric">بارامتري</option>
+      <option value="higher">مشتقات عليا</option>
+      <option value="series">متسلسلات</option>
+      <option value="limits">نهايات ولوبيتال</option>
+    </select>
+    <a class="btn primary" href="https://youtube.com/playlist?list=PLYvBQARQqTs0xz4oojhdpYwoPEhmJujmM" target="_blank" rel="noopener">فتح القائمة كاملة على YouTube ↗</a>
+  </div>
+
+  <div id="videoList" class="video-list">
+    <div class="notice">جارٍ تحميل قائمة الفيديوهات...</div>
+  </div>
+
+  <!-- مشغل الفيديو المدمج -->
+  <div id="videoPlayerModal" class="video-modal" hidden onclick="if(event.target===this)closeVideoPlayer()">
+    <div class="video-modal-box" role="dialog" aria-modal="true">
+      <div class="video-modal-head">
+        <h3 id="videoPlayerTitle">تشغيل الفيديو</h3>
+        <button class="icon-btn" onclick="closeVideoPlayer()" aria-label="إغلاق">×</button>
+      </div>
+      <div class="video-modal-frame">
+        <iframe id="videoPlayerFrame" src="" title="مشغل الفيديو" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-modal-foot">
+        <a id="videoPlayerYTLink" class="btn" href="#" target="_blank" rel="noopener">فتح في YouTube ↗</a>
+        <button class="btn" onclick="closeVideoPlayer()">إغلاق</button>
+      </div>
+    </div>
+  </div>
 </section>
+<!-- NOTES -->
 <section class="page" id="page-notes">
-<h1 class="page-title">ملاحظاتي</h1>
-<p class="page-sub">اكتب ملاحظاتك وأسئلتك أثناء المذاكرة. تُحفظ تلقائيًا على هذا الجهاز.</p>
-<div class="card">
-<textarea class="field note-area" id="notes" placeholder="اكتب ملاحظاتك هنا...">
-</textarea>
-<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
-<small class="muted" id="noteStatus">الحفظ تلقائي</small>
-<button class="btn" id="clearNotes">مسح الملاحظات</button>
-</div>
-</div>
+  <h1 class="page-title">ملاحظاتي</h1>
+  <p class="page-sub">تُحفظ تلقائيًا على هذا الجهاز.</p>
+  <div class="card">
+    <textarea class="field note-area" id="notes" placeholder="اكتب ملاحظاتك هنا..."></textarea>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+      <small class="muted" id="noteStatus">الحفظ تلقائي</small>
+      <button class="btn" id="clearNotes">مسح الملاحظات</button>
+    </div>
+  </div>
 </section>
-<section class="page" id="page-progress" aria-hidden="true">
-<h1 class="page-title">تقارير التقدم</h1>
-<p class="page-sub">ملخص إنجازك المسجل على هذا الجهاز.</p>
-<div class="grid three">
-<div class="stat">
-<small>دروس مكتملة</small>
-<strong id="pDone">0</strong>
-</div>
-<div class="stat">
-<small>اختبارات مكتملة</small>
-<strong id="pQuiz">0</strong>
-</div>
-<div class="stat">
-<small>نسبة الإنجاز</small>
-<strong id="pPercent">0%</strong>
-</div>
-</div>
-<div class="card" style="margin-top:14px">
-<h3>مسار الإنجاز</h3>
-<p class="muted">سيظهر هنا تقدم كل درس بعد تفعيل محتوى الدروس والاختبارات.</p>
-<div class="progress">
-<span id="progressBar" style="width:0%">
-</span>
-</div>
-</div>
-</section>
+
+<!-- SETTINGS -->
 <section class="page" id="page-settings">
-<h1 class="page-title">الإعدادات</h1>
-<p class="page-sub">خصص تجربة المذاكرة كما تحب. يتم حفظ اختياراتك تلقائيًا على هذا الجهاز.</p>
-<div class="grid two">
- <div class="card"><div class="card-icon">⛶</div><h3>عرض الموقع</h3><p>استخدم كامل مساحة الشاشة للتركيز أثناء المذاكرة.</p><button class="btn primary" id="fullscreenBtn" style="margin-top:13px">عرض بملء الشاشة</button></div>
- <div class="card"><div class="card-icon">◐</div><h3>الثيم</h3><p>اختر المظهر المناسب لعينيك.</p><select class="field" id="themeSelect" style="width:100%;margin-top:13px"><option value="dark">داكن</option><option value="light">فاتح</option><option value="midnight">منتصف الليل</option></select></div>
- <div class="card"><div class="card-icon">Aa</div><h3>نوع الخط</h3><p>غيّر خط واجهة المنصة.</p><select class="field" id="fontSelect" style="width:100%;margin-top:13px"><option value="Cairo">Cairo</option><option value="Tajawal">Tajawal</option><option value="Almarai">Almarai</option><option value="system-ui">خط الجهاز</option></select></div>
- <div class="card"><div class="card-icon">✦</div><h3>التواصل مع المطور</h3><p>للاقتراحات أو الإبلاغ عن مشكلة أو متابعة تطوير المنصة.</p><a class="btn primary" style="display:inline-block;text-decoration:none;margin-top:13px" href="https://alambrator100k.github.io/Ayman-Abu-Zeid/" target="_blank" rel="noopener">زيارة صفحة المطور ↗</a></div>
-</div>
-<div class="notice" style="margin-top:15px"><strong>حفظ تلقائي:</strong> يتم حفظ آخر صفحة ودرس ومرحلة وصلت إليها، بالإضافة إلى نتائج الاختبارات والملاحظات والثيم والخط، داخل المتصفح.</div>
-<div style="display:none"><button id="exportBtn"></button><input id="importFile" type="file"></div>
+  <h1 class="page-title">الإعدادات</h1>
+  <p class="page-sub">خصص تجربتك. تُحفظ الاختيارات تلقائيًا.</p>
+  <div class="grid two">
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <h3>الثيم</h3>
+      <p>اختر المظهر المناسب لعينيك.</p>
+      <select class="field" id="themeSelect" style="width:100%;margin-top:13px">
+        <option value="dark">داكن (افتراضي)</option>
+        <option value="light">فاتح</option>
+        <option value="midnight">منتصف الليل</option>
+        <option value="emerald">زمردي</option>
+        <option value="royal">أزرق ملكي</option>
+        <option value="sunset">غروب</option>
+        <option value="rose">وردي</option>
+        <option value="ocean">محيطي</option>
+      </select>
+    </div>
+    <div class="card">
+      <div class="card-icon">Aa</div>
+      <h3>نوع الخط</h3>
+      <p>12 خط عربي متنوع.</p>
+      <select class="field" id="fontSelect" style="width:100%;margin-top:13px">
+        <option value="Cairo">Cairo</option>
+        <option value="Tajawal">Tajawal</option>
+        <option value="Almarai">Almarai</option>
+        <option value="Amiri">Amiri</option>
+        <option value="Lateef">Lateef</option>
+        <option value="Scheherazade">Scheherazade</option>
+        <option value="ReemKufi">Reem Kufi</option>
+        <option value="ElMessiri">El Messiri</option>
+        <option value="Markazi">Markazi Text</option>
+        <option value="NotoKufi">Noto Kufi Arabic</option>
+        <option value="IBMPlex">IBM Plex Arabic</option>
+        <option value="Readex">Readex Pro</option>
+        <option value="system">خط الجهاز</option>
+      </select>
+    </div>
+    <div class="card">
+      <div class="card-icon">⛶</div>
+      <h3>عرض الموقع</h3>
+      <p>استخدم كامل مساحة الشاشة للتركيز.</p>
+      <button class="btn primary" id="fullscreenBtn" style="margin-top:13px">ملء الشاشة</button>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <h3>التواصل مع المطور</h3>
+      <p>للاقتراحات أو الإبلاغ عن مشكلة.</p>
+      <a class="btn primary" style="display:inline-block;text-decoration:none;margin-top:13px" href="https://alambrator100k.github.io/Ayman-Abu-Zeid/" target="_blank" rel="noopener">زيارة صفحة المطور ↗</a>
+    </div>
+  </div>
+  <div class="notice" style="margin-top:15px">
+    <strong>حفظ تلقائي:</strong> آخر صفحة ودرس ومرحلة ونتائج الاختبارات والملاحظات والثيم والخط تُحفظ داخل المتصفح.
+  </div>
 </section>
+
 <div class="footer">MATH MASTER · ALAMBRATOR · BUILT FOR UNDERSTANDING, NOT MEMORIZATION</div>
 </main>
 </div>
+
+<!-- MOTIVATION -->
 <div id="motivationModal" class="motivation-overlay" hidden onclick="if(event.target===this)hideMotivation()">
- <div class="motivation-dialog" role="dialog" aria-modal="true" aria-labelledby="motivationTitle">
-  <button class="icon-btn motivation-close" onclick="hideMotivation()" aria-label="إغلاق">×</button>
-  <div class="eyebrow">ALAMBRATOR · KEEP GOING</div><h2 id="motivationTitle">رسالة لك في طريق إتقان الرياضيات</h2>
-  <div id="motivationText" class="motivation-text"></div>
-  <div class="motivation-actions"><button class="btn" onclick="nextMotivation()">رسالة أخرى ↻</button><button class="btn primary" onclick="hideMotivation();showPage('study')">ارجع للمذاكرة ←</button></div>
- </div>
+  <div class="motivation-dialog" role="dialog" aria-modal="true">
+    <button class="icon-btn motivation-close" onclick="hideMotivation()" aria-label="إغلاق">×</button>
+    <div class="eyebrow">ALAMBRATOR · KEEP GOING</div>
+    <h2>رسالة لك في طريق إتقان الرياضيات</h2>
+    <div id="motivationText" class="motivation-text"></div>
+    <div class="motivation-actions">
+      <button class="btn" onclick="nextMotivation()">رسالة أخرى ↻</button>
+      <button class="btn primary" onclick="hideMotivation();showPage('study')">ارجع للمذاكرة ←</button>
+    </div>
+  </div>
 </div>
-<div class="toast" id="toast">
-</div>
-<script>
-const topics = [
-{id:'basic',name:'قواعد الاشتقاق الأساسية',en:'Differentiation – Basic Rules',icon:'∂',source:'received',desc:'الثابت والقوة والجمع والطرح والجذور والأسس الكسرية والسالبة.',sheets:'Sheet (1)'},
-{id:'trig',name:'الدوال المثلثية',en:'Trigonometric Functions',icon:'∿',source:'received',desc:'مشتقات sin وcos وtan وcot وsec وcosec وتطبيقاتها.',sheets:'Sheet (2)'},
-{id:'inverse',name:'الدوال المثلثية العكسية',en:'Inverse Trigonometric Functions',icon:'↶',source:'received',desc:'مشتقات الدوال العكسية الست وقواعد المقامات والإشارات.',sheets:'Sheet (3)'},
-{id:'chain',name:'قاعدة السلسلة والاشتقاق المركب',en:'Chain Rule',icon:'⛓',source:'received',desc:'اشتقاق دالة داخل دالة وتحديد الداخل والخارج.',sheets:'Sheets (1, 2, 5)'},
-{id:'logexp',name:'الدوال الأسية واللوغاريتمية',en:'Exponential & Logarithmic',icon:'eˣ',source:'received',desc:'قواعد ln وlog وeˣ والأساس a وتطبيقات الضرب والسلسلة.',sheets:'Sheet (4)'},
-{id:'hyper',name:'الدوال الزائدية والعكسية',en:'Hyperbolic Functions',icon:'⌁',source:'received',desc:'sinh وcosh وtanh وبقية الدوال ومشتقات العكسية.',sheets:'Sheet (5)'},
-{id:'second',name:'المشتقات الثانية والعليا',en:'Higher Derivatives',icon:'∂²',source:'received',desc:'إيجاد المشتقة الأولى ثم الثانية وتطبيقات أوراق العمل.',sheets:'Sheets (1, 2, 4)'},
-{id:'proof',name:'مسائل الإثبات',en:'Show That Problems',icon:'✓',source:'received',desc:'تنظيم خطوات الإثبات والاشتقاق والتبسيط حتى الوصول للمطلوب.',sheets:'Sheets (1, 3, 4)'},
-{id:'lhopital',name:'قاعدة لوبيتال',en:"L’Hôpital’s Rule",icon:'lim',source:'mentioned',desc:'النهايات غير المعينة وشروط تطبيق القاعدة؛ ننتظر ورقة الدكتور.',sheets:'لم تصل ورقتها التفصيلية'},
-{id:'maclaurin',name:'متسلسلة ماكلورين',en:'Maclaurin Series',icon:'Σ',source:'mentioned',desc:'توسع تايلور حول الصفر؛ ننتظر أمثلة وترتيب محاضرتك.',sheets:'لم تصل ورقتها التفصيلية'},
-{id:'taylor',name:'متسلسلة تايلور',en:'Taylor Series',icon:'T',source:'mentioned',desc:'التوسع حول نقطة عامة وشروط التقارب؛ ننتظر ورقة الدكتور.',sheets:'لم تصل ورقتها التفصيلية'}
-];
 
-const lessonTabs=['افهم شكل السؤال','اختَر القاعدة','القانون بالعربي والرموز','حل خطوة بخطوة','اختبر فهمك','ملخص ومراجعة'];
+<div class="toast" id="toast"></div>
 
-const lessons={
-basic:[`<h3>مقدمة: كيف نشتق؟</h3><p>الاشتقاق هو إيجاد معدل تغير الدالة بالنسبة إلى المتغير x. إذا كانت y دالة في x، فإن المشتقة تكتب بالصور التالية:</p><div class="formula-box">\\(y'=\\frac{dy}{dx}=f'(x)\\)</div><p>في ورقة Sheet (1)، المطلوب غالبًا هو إيجاد المشتقة الأولى أو الثانية.</p>`,`<h3>الفكرة ببساطة</h3><p>ابدأ بتحديد شكل كل حد. إذا كان الحد قوة لـ x فاستخدم قاعدة القوة. وإذا كان هناك قوس مرفوع لأس فغالبًا تحتاج قاعدة السلسلة. وإذا وجدت ضربًا أو قسمة بين دالتين فاختر قاعدة الضرب أو القسمة.</p>`,`<h3>القوانين الأساسية</h3><p><b>قاعدة الثابت:</b> مشتقة أي عدد ثابت تساوي صفرًا.</p><div class="formula-box">\\(\\frac{d}{dx}(c)=0\\)</div><p><b>قاعدة القوة:</b> ننزل الأس ليصبح معاملًا، ثم نضربه في المعامل الموجود، ونطرح واحدًا من الأس.</p><div class="formula-box">\\(\\frac{d}{dx}(x^n)=nx^{n-1}\\)</div><p><b>قاعدة الجمع والطرح:</b> نشتق كل حد بمفرده مع الاحتفاظ بإشارة الجمع أو الطرح.</p><div class="formula-box">\\((u\\pm v)'=u'\\pm v'\\)</div><p><b>قاعدة الضرب:</b> مشتقة الأول في الثاني، زائد الأول في مشتقة الثاني.</p><div class="formula-box">\\((uv)'=u'v+uv'\\)</div><p><b>قاعدة القسمة:</b> مشتقة البسط في المقام، ناقص البسط في مشتقة المقام، على مربع المقام.</p><div class="formula-box">\\(\\left(\\frac uv\\right)'=\\frac{u'v-uv'}{v^2}\\)</div><p><b>قاعدة الجذر:</b> حوّل الجذر إلى أس كسري ثم اشتق بقاعدة القوة.</p><div class="formula-box">\\(\\sqrt[n]{x^m}=x^{m/n}\\)</div>`,`<h3>أمثلة محلولة</h3><p><b>مثال 1:</b> أوجد مشتقة \\(y=x^5+3x^3+8x+7\\).</p><p>نشتق كل حد: مشتقة \\(x^5\\) هي \\(5x^4\\)، ومشتقة \\(3x^3\\) هي \\(9x^2\\)، ومشتقة \\(8x\\) هي 8، ومشتقة الثابت 7 تساوي صفرًا.</p><div class="formula-box">\\(\\boxed{y'=5x^4+9x^2+8}\\)</div><p><b>مثال 2:</b> \\(y=(x^2+3x+5)^4\\). نستخدم قاعدة السلسلة: مشتقة الخارج × مشتقة الداخل.</p><div class="formula-box">\\(y'=4(x^2+3x+5)^3(2x+3)\\)</div>`,`<h3>أخطاء شائعة</h3><ul><li>نسيان ضرب المعامل الموجود أمام x في الأس.</li><li>نسيان طرح واحد من الأس.</li><li>اعتبار مشتقة الثابت هي الثابت نفسه؛ الصحيح أنها صفر.</li><li>في قاعدة الضرب لا نضرب المشتقتين معًا، بل نستخدم \\(u'v+uv'\\).</li><li>في قاعدة القسمة انتبه لترتيب البسط وإشارة الطرح.</li></ul>`,`<h3>ملخص سريع</h3><div class="formula-box">\\(c\\to0,\\quad x^n\\to nx^{n-1}\\)</div><div class="formula-box">\\((u+v)'=u'+v',\\quad (uv)'=u'v+uv'\\)</div><div class="formula-box">\\(\\left(\\frac uv\\right)'=\\frac{u'v-uv'}{v^2}\\)</div><p>اسأل نفسك قبل الحل: هل يوجد جمع؟ ضرب؟ قسمة؟ قوس مركب؟ ثم اختر القاعدة المناسبة.</p>`],
-trig:[`<h3>مقدمة الدوال المثلثية</h3><p>هذه الدوال تظهر مباشرة في Sheet (2). احفظ المشتقات الأساسية، ثم انتبه إلى مشتقة ما بداخل الدالة إذا كان مثلثيًا مركبًا مثل \\(\\sin(3x)\\).</p>`,`<h3>كيف أتعرف على السؤال؟</h3><p>إذا رأيت sin أو cos أو tan أو cot أو sec أو cosec فابدأ بجدول المشتقات. إذا كانت الزاوية ليست x وحدها، اضرب في مشتقة الزاوية باستخدام قاعدة السلسلة.</p>`,`<h3>جدول القوانين</h3><div class="formula-box">\\((\\sin u)'=u'\\cos u\\)</div><div class="formula-box">\\((\\cos u)'=-u'\\sin u\\)</div><div class="formula-box">\\((\\tan u)'=u'\\sec^2u\\)</div><div class="formula-box">\\((\\cot u)'=-u'\\csc^2u\\)</div><div class="formula-box">\\((\\sec u)'=u'\\sec u\\tan u\\)</div><div class="formula-box">\\((\\csc u)'=-u'\\csc u\\cot u\\)</div>`,`<h3>أمثلة محلولة</h3><p><b>مثال:</b> \\(y=\\cos 3x\\). مشتقة الخارج هي \\(-\\sin 3x\\)، ومشتقة الداخل 3.</p><div class="formula-box">\\(\\boxed{y'=-3\\sin 3x}\\)</div><p><b>مثال:</b> \\(y=\\sin^3x=(\\sin x)^3\\).</p><div class="formula-box">\\(\\boxed{y'=3\\sin^2x\\cos x}\\)</div>`,`<h3>أخطاء شائعة</h3><ul><li>نسيان السالب في مشتقة cos وcot وcosec.</li><li>نسيان مشتقة الزاوية الداخلية.</li><li>الخلط بين \\(\\sin^3x\\) و \\(\\sin(x^3)\\).</li></ul>`,`<h3>ملخص الدوال المثلثية</h3><p>احفظ جدول المشتقات الست، ثم طبّق قاعدة السلسلة إذا كانت الزاوية u وليست x فقط.</p>`],
-inverse:[`<h3>مقدمة الدوال المثلثية العكسية</h3><p>الرمز \\(\\sin^{-1}x\\) يعني الدالة العكسية (Arc Sine)، وليس مقلوب الجيب. وهو موضوع Sheet (3).</p>`,`<h3>كيف تختار القانون؟</h3><p>حدد اسم الدالة العكسية أولًا، ثم حدد u وما مشتقته. انتبه إلى أن مشتقة cos⁻¹ وcot⁻¹ وcosec⁻¹ تحتوي على إشارة سالبة.</p>`,`<h3>قوانين الاشتقاق</h3><div class="formula-box">\\((\\sin^{-1}u)'=\\frac{u'}{\\sqrt{1-u^2}}\\)</div><div class="formula-box">\\((\\cos^{-1}u)'=-\\frac{u'}{\\sqrt{1-u^2}}\\)</div><div class="formula-box">\\((\\tan^{-1}u)'=\\frac{u'}{1+u^2}\\)</div><div class="formula-box">\\((\\cot^{-1}u)'=-\\frac{u'}{1+u^2}\\)</div><div class="formula-box">\\((\\sec^{-1}u)'=\\frac{u'}{|u|\\sqrt{u^2-1}}\\)</div><div class="formula-box">\\((\\csc^{-1}u)'=-\\frac{u'}{|u|\\sqrt{u^2-1}}\\)</div><p>هذه الصيغ تراعي المجالات المعتادة للدوال العكسية.</p>`,`<h3>أمثلة محلولة من Sheet (3)</h3><p><b>السؤال 2:</b> \\(y=\\tan^{-1}(x^2)\\). نضع \\(u=x^2\\)، إذن \\(u'=2x\\).</p><div class="formula-box">\\(y'=\\frac{u'}{1+u^2}=\\frac{2x}{1+x^4}\\)</div><p><b>السؤال 3:</b> \\(y=\\cos^{-1}(3x^4)\\). هنا \\(u'=12x^3\\).</p><div class="formula-box">\\(\\boxed{y'=-\\frac{12x^3}{\\sqrt{1-9x^8}}}\\)</div>`,`<h3>أخطاء شائعة</h3><ul><li>اعتبار الأس −1 مقلوبًا وليس دالة عكسية.</li><li>نسيان مشتقة u.</li><li>نسيان السالب في cos⁻¹ وcot⁻¹ وcosec⁻¹.</li><li>نسيان القيمة المطلقة في مقام sec⁻¹ وcosec⁻¹ عند كتابة الصيغة العامة.</li></ul>`,`<h3>ملخص</h3><p>Sin وCos مقامهما جذر \\(1-u^2\\). Tan وCot مقامهما \\(1+u^2\\). Sec وCosec مقامهما \\(|u|\\sqrt{u^2-1}\\)، مع مراعاة إشارة البسط.</p>`],
-chain:[`<h3>مقدمة قاعدة السلسلة</h3><p>نستخدمها عندما تكون لدينا دالة داخل دالة، مثل \\((x^2+1)^5\\) أو \\(\\sin(x^3)\\).</p>`,`<h3>طريقة التفكير</h3><p>سمِّ الجزء الداخلي u. اشتق الشكل الخارجي مع إبقاء u كما هو، ثم اضرب في مشتقة u.</p>`,`<h3>القانون بالعربي</h3><p><b>مشتقة الدالة المركبة = مشتقة الدالة الخارجية × مشتقة الدالة الداخلية.</b></p><div class="formula-box">\\(\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}\\)</div>`,`<h3>مثال</h3><p>\\(y=(x^2+3x+5)^4\\). مشتقة الخارج \\(4(x^2+3x+5)^3\\)، ومشتقة الداخل \\(2x+3\\).</p><div class="formula-box">\\(\\boxed{y'=4(x^2+3x+5)^3(2x+3)}\\)</div>`,`<h3>خطأ شائع</h3><p>لا تتوقف عند مشتقة الخارج؛ يجب ضربها في مشتقة الداخل دائمًا.</p>`,`<h3>الملخص</h3><div class="formula-box">\\(\\text{مشتقة الخارج}\\times\\text{مشتقة الداخل}\\)</div>`],
-logexp:[`<h3>مقدمة الأسية واللوغاريتمية</h3><p>تظهر في Sheet (4)، ومنها الدوال \\(e^x\\) و \\(\\ln x\\) و \\(\\log_a x\\).</p>`,`<h3>الفكرة</h3><p>في اللوغاريتم الطبيعي نقسم مشتقة الداخل على الداخل. في الدالة الأسية ذات الأس e نحتفظ بالدالة كما هي ونضرب في مشتقة الأس.</p>`,`<h3>قوانين اللوغاريتم والأسية</h3><div class="formula-box">\\((\\ln u)'=\\frac{u'}u\\)</div><div class="formula-box">\\((\\log_a u)'=\\frac{u'}{u\\ln a}\\)</div><div class="formula-box">\\((e^u)'=u'e^u\\)</div><div class="formula-box">\\((a^u)'=u'a^u\\ln a\\)</div><p>قوانين اللوغاريتم: \\(\\ln(ab)=\\ln a+\\ln b\\)، و \\(\\ln(a/b)=\\ln a-\\ln b\\)، و \\(\\ln(a^n)=n\\ln a\\).</p>`,`<h3>مثال من Sheet (4)</h3><p>\\(y=x^3\\ln(\\cos x)\\). نستخدم قاعدة الضرب. مشتقة \\(x^3\\) هي \\(3x^2\\)، ومشتقة \\(\\ln(\\cos x)\\) هي \\(-\\tan x\\).</p><div class="formula-box">\\(\\boxed{y'=3x^2\\ln(\\cos x)-x^3\\tan x}\\)</div>`,`<h3>أخطاء شائعة</h3><ul><li>نسيان مشتقة الداخل في \\(\\ln u\\) و \\(e^u\\).</li><li>الخلط بين log العشري وln الطبيعي.</li><li>نسيان قاعدة الضرب إذا كان x³ مضروبًا في اللوغاريتم.</li></ul>`,`<h3>ملخص</h3><div class="formula-box">\\(\\ln u\\to\\frac{u'}u,\\qquad e^u\\to u'e^u\\)</div>`],
-hyper:[`<h3>مقدمة الدوال الزائدية</h3><p>الدوال الزائدية تشبه المثلثية في جدول الاشتقاق، لكنها مرتبطة بالدوال الأسية.</p>`,`<h3>التعرف على الدوال</h3><p>الدوال الأساسية هي sinh وcosh وtanh وcoth وsech وcsch. انتبه إلى الإشارات السالبة في مشتقات coth وsech وcsch.</p>`,`<h3>قوانين الاشتقاق</h3><div class="formula-box">\\((\\sinh u)'=u'\\cosh u\\)</div><div class="formula-box">\\((\\cosh u)'=u'\\sinh u\\)</div><div class="formula-box">\\((\\tanh u)'=u'\\sech^2u\\)</div><div class="formula-box">\\((\\coth u)'=-u'\\csch^2u\\)</div><div class="formula-box">\\((\\sech u)'=-u'\\sech u\\tanh u\\)</div><div class="formula-box">\\((\\csch u)'=-u'\\csch u\\coth u\\)</div><p>هوية أساسية: \\(\\cosh^2x-\\sinh^2x=1\\).</p>`,`<h3>مثال</h3><p>إذا \\(y=\\sinh(3x)\\)، فمشتقة الخارج \\(\\cosh(3x)\\)، ومشتقة الداخل 3.</p><div class="formula-box">\\(y'=3\\cosh(3x)\\)</div>`,`<h3>أخطاء شائعة</h3><p>لا تخلط بين sinh وsin، أو cosh وcos. الدوال الزائدية ليست الدوال المثلثية نفسها.</p>`,`<h3>ملخص</h3><p>استخدم جدول الدوال الست، واضرب في مشتقة الداخل إذا كانت الدالة مركبة.</p>`],
-second:[`<h3>ما المقصود بالمشتقة الثانية؟</h3><p>هي اشتقاق المشتقة الأولى مرة أخرى.</p>`,`<h3>الخطوات</h3><ol><li>أوجد \\(y'\\) أولًا.</li><li>اشتق الناتج مرة ثانية.</li><li>بسّط الحدود واكتب \\(y''\\) أو \\(\\frac{d^2y}{dx^2}\\).</li></ol>`,`<h3>الرموز</h3><div class="formula-box">\\(y'=\\frac{dy}{dx},\\qquad y''=\\frac{d^2y}{dx^2}\\)</div>`,`<h3>مثال</h3><p>\\(y=x^4-3x^{-2}+15x+10\\).</p><p>أولًا: \\(y'=4x^3+6x^{-3}+15\\).</p><p>ثانيًا: \\(y''=12x^2-18x^{-4}\\).</p>`,`<h3>خطأ شائع</h3><p>لا تكتب المشتقة الثانية مباشرة دون إظهار المشتقة الأولى؛ إظهار المرحلتين يقلل أخطاء الأسس والإشارات.</p>`,`<h3>ملخص</h3><p>اشتق مرتين بالتتابع، مع تطبيق قواعد الاشتقاق نفسها في كل مرة.</p>`],
-proof:[`<h3>كيف تتعامل مع Show That؟</h3><p>ابدأ من الدالة المعطاة، حدد القاعدة، اشتق، ثم بسّط حتى تصل إلى الطرف المطلوب.</p>`,`<h3>خطة الإثبات</h3><ol><li>اكتب المعطى كما هو.</li><li>حدد هل تحتاج سلسلة أو ضربًا أو قسمة.</li><li>نفذ الاشتقاق دون القفز على الخطوات.</li><li>استخدم التبسيط الجبري أو الهوية المناسبة.</li><li>قارن الناتج بالمطلوب.</li></ol>`,`<h3>قواعد مساعدة</h3><p>راجع قواعد القوة والسلسلة والضرب والقسمة والدوال المثلثية والعكسية؛ اختيار القانون يعتمد على شكل المسألة.</p>`,`<h3>مثال من Sheet (1)</h3><p>إذا \\(y=\\frac{2x}{\\sqrt{x^2+4}}\\)، نكتب \\(y=2x(x^2+4)^{-1/2}\\)، ثم نستخدم قاعدة الضرب والسلسلة.</p><div class="formula-box">\\(y'=2(x^2+4)^{-1/2}-2x^2(x^2+4)^{-3/2}\\)</div><p>بتوحيد المقام:</p><div class="formula-box">\\(\\boxed{y'=\\frac{8}{(x^2+4)^{3/2}}}\\)</div>`,`<h3>أخطاء شائعة</h3><p>لا تبدأ من النتيجة المطلوبة وتفترض صحتها. ابدأ من المعطى، واكتب سبب كل تحويل.</p>`,`<h3>ملخص</h3><p>المعطى ← اختيار القاعدة ← الاشتقاق ← التبسيط ← النتيجة المطلوبة.</p>`],
-lhopital:[`<h3>مقدمة قاعدة لوبيتال</h3><p>تُستخدم القاعدة في حساب بعض النهايات عندما يؤدي التعويض المباشر إلى صورة غير معينة، وأشهرها صفر على صفر أو ما لا نهاية على ما لا نهاية.</p>`,`<h3>متى أستخدمها؟</h3><ol><li>احسب النهاية بالتعويض المباشر أولًا.</li><li>تأكد أن الصورة 0/0 أو ∞/∞.</li><li>تحقق من شروط النظرية في جوار النقطة.</li><li>اشتق البسط وحده والمقام وحده، ثم احسب النهاية الجديدة إذا كانت موجودة.</li></ol>`,`<h3>القانون</h3><div class="formula-box">\\(\\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim_{x\\to a}\\frac{f_x(x)}{g_x(x)}\\)</div><p>حيث يجب أن تتحقق شروط لوبيتال، وأن تكون النهاية على الطرف الأيمن موجودة أو لا نهائية.</p>`,`<h3>مثال تأسيسي</h3><p>احسب \\(\\lim_{x\\to0}\\frac{\\sin x}{x}\\). بالتعويض نحصل على 0/0، فنستخدم لوبيتال:</p><div class="formula-box">\\(\\lim_{x\\to0}\\frac{\\cos x}{1}=1\\)</div>`,`<h3>أخطاء شائعة</h3><ul><li>استخدام لوبيتال قبل التأكد من الصورة غير المعينة.</li><li>اشتقاق الكسر كله بدل اشتقاق البسط والمقام كلٌّ على حدة.</li><li>الاعتقاد أن كل صورة غير معينة تُحل مباشرة بلوبيتال؛ بعض الصور تحتاج تحويلًا أولًا.</li></ul>`,`<h3>ملخص</h3><p>التعويض أولًا، تحقق من 0/0 أو ∞/∞، تحقق من الشروط، ثم اشتق البسط والمقام واحسب النهاية الجديدة. هذا شرح تأسيسي عام وسنطابقه مع صياغة محاضرتك عند وصولها.</p>`],
-maclaurin:[`<h3>مقدمة متسلسلة ماكلورين</h3><p>ماكلورين هي متسلسلة تايلور عندما يكون مركز التوسع صفرًا. نستخدمها لتمثيل الدالة على هيئة مجموع حدود من قوى x قرب الصفر.</p>`,`<h3>طريقة البناء</h3><p>نحسب قيمة الدالة عند صفر، ثم مشتقتها الأولى عند صفر، ثم الثانية، وهكذا. كل قيمة توضع في معامل الحد المقابل مع القسمة على العامل المضروب.</p>`,`<h3>القانون</h3><div class="formula-box">\\(f(x)=f(0)+\\frac{f_x(0)}{1!}x+\\frac{f_{xx}(0)}{2!}x^2+\\cdots\\)</div><div class="formula-box">\\(f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(0)}{n!}x^n\\)</div>`,`<h3>متسلسلات أساسية</h3><p>الجيب:</p><div class="formula-box">\\(\\sin x=x-\\frac{x^3}{3!}+\\frac{x^5}{5!}-\\cdots\\)</div><p>جيب التمام:</p><div class="formula-box">\\(\\cos x=1-\\frac{x^2}{2!}+\\frac{x^4}{4!}-\\cdots\\)</div><p>الدالة الأسية:</p><div class="formula-box">\\(e^x=1+x+\\frac{x^2}{2!}+\\frac{x^3}{3!}+\\cdots\\)</div><p>اللوغاريتم:</p><div class="formula-box">\\(\\ln(1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\cdots\\)</div>`,`<h3>أخطاء شائعة</h3><ul><li>نسيان أن مركز ماكلورين هو صفر.</li><li>نسيان العامل المضروب في المقام.</li><li>الخلط بين حدود المتسلسلة وإشارة كل حد.</li><li>إهمال مجال التقارب.</li></ul>`,`<h3>ملخص</h3><p>احسب المشتقات المتتابعة عند صفر، ثم عوض بها في صيغة ماكلورين. هذا محتوى تأسيسي، وسنضيف طريقة الدكتور وأمثلة ورقته بعد استلامها.</p>`],
-taylor:[`<h3>مقدمة متسلسلة تايلور</h3><p>متسلسلة تايلور تمثل الدالة حول نقطة عامة a، وتستخدم مشتقات الدالة عند هذه النقطة لبناء حدود كثيرة الحدود.</p>`,`<h3>طريقة الحل</h3><ol><li>حدد مركز التوسع a.</li><li>احسب f(a) والمشتقات المتتابعة.</li><li>عوّض في القانون.</li><li>اكتب الحدود المطلوبة فقط إذا طلب السؤال عددًا محددًا منها.</li><li>انتبه إلى شروط التقارب والباقي إذا طلب تقدير الخطأ.</li></ol>`,`<h3>القانون العام</h3><div class="formula-box">\\(f(x)=f(a)+\\frac{f_x(a)}{1!}(x-a)+\\frac{f_{xx}(a)}{2!}(x-a)^2+\\cdots\\)</div><div class="formula-box">\\(f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(x-a)^n\\)</div>`,`<h3>مثال توضيحي</h3><p>إذا كان مركز التوسع a=0 فإن صيغة تايلور تتحول إلى ماكلورين. أما إذا كان a=1 مثلًا، فتظهر القوى في صورة (x−1)، وتُحسب المشتقات عند x=1.</p>`,`<h3>أخطاء شائعة</h3><ul><li>التعويض بالمشتقات عند صفر رغم أن المركز a ليس صفرًا.</li><li>كتابة x بدل (x−a).</li><li>نسيان n! في المقام.</li></ul>`,`<h3>ملخص</h3><p>تايلور حول a، وماكلورين حالة خاصة عندما a=0. سنثبت ترتيب المحاضرة وأمثلتها عند إرسال الورقة.</p>`]
-};
-
-// إضافات مبنية مباشرة على الصفحات المصورة المرسلة: الاشتقاق الضمني والبارامتري، والمشتقات العليا.
-topics.push(
-{id:'implicit',name:'الاشتقاق الضمني',en:'Implicit Differentiation',icon:'∂y',source:'received',desc:'اشتقاق المعادلات التي يظهر فيها x و y معًا، مع اعتبار y دالة في x.',sheets:'صفحة 18 + Sheet 5'},
-{id:'parametric',name:'الاشتقاق البارامتري',en:'Parametric Differentiation',icon:'t→',source:'received',desc:'إيجاد dy/dx من x و y بدلالة متغير وسيط t، ثم المشتقة الثانية.',sheets:'صفحتا 19–20'},
-{id:'logdiff',name:'الاشتقاق اللوغاريتمي',en:'Logarithmic Differentiation',icon:'ln',source:'received',desc:'استخدام أخذ ln للطرفين عند وجود متغير في الأس أو حاصل ضرب وقوى مركبة.',sheets:'Sheet 3 + أمثلة الصفحات المصورة'},
-{id:'higher',name:'المشتقات العليا والرتب المتتابعة',en:'Higher Order Derivatives',icon:'∂ⁿ',source:'received',desc:'حساب المشتقة الثانية والثالثة والنونية، وربطها بمتسلسلات تايلور.',sheets:'صفحتا 19–22'}
-);
-
-Object.assign(lessons,{
-implicit:[
-`<h3>أولًا: كيف أعرف أن السؤال اشتقاق ضمني؟</h3><p>إذا وجدت x و y في المعادلة نفسها، مثل <span dir="ltr">x² + xy = 10</span>، ولم تكن y مكتوبة وحدها، فهذا غالبًا اشتقاق ضمني. اعتبر y دالة في x؛ لذلك مشتقة y بالنسبة إلى x هي <b>y′</b> وليست صفرًا.</p><div class="notice"><b>علامة مهمة:</b> كلما اشتققت حدًا يحتوي على y، اسأل: هل أحتاج قاعدة السلسلة؟ نعم، لأن y متغيرة مع x.</div>`,
-`<h3>خطة الحل الثابتة</h3><ol><li>اشتق طرفي المعادلة بالنسبة إلى x.</li><li>اشتق حدود x بالقواعد العادية.</li><li>عند اشتقاق y اكتب y′.</li><li>عند اشتقاق xy استخدم قاعدة الضرب: مشتقة الأول في الثاني + الأول في مشتقة الثاني.</li><li>اجمع كل الحدود التي تحتوي على y′ في طرف واحد.</li><li>أخرج y′ عاملًا مشتركًا، ثم اقسم لعزله.</li></ol><p>لا تنسَ: <span dir="ltr">d(y²)/dx = 2y y′</span> وليس <span dir="ltr">2y</span> فقط.</p>`,
-`<h3>القواعد بالعربي</h3><p><b>قاعدة القوة مع y:</b> ننزل الأس، ونطرح واحدًا من الأس، ثم نضرب في مشتقة الداخل y′.</p><div class="formula-box">\(\frac{d}{dx}(y^n)=ny^{n-1}y'\)</div><p><b>قاعدة الضرب للحد xy:</b> مشتقة x في y + x في مشتقة y.</p><div class="formula-box">\(\frac{d}{dx}(xy)=y+xy'\)</div><p><b>قاعدة الجمع:</b> نشتق كل حد وحده ونحافظ على الإشارات.</p>`,
-`<h3>مثال من نمط الصفحة 18: أوجد y′ إذا كان</h3><div class="formula-box">\(x^2+xy=10\)</div><p><b>الخطوة 1 – اشتق الطرفين:</b></p><div class="formula-box">\(2x+(y+xy')=0\)</div><p><b>الخطوة 2 – اجمع حدود y′ وحدها:</b></p><div class="formula-box">\(xy'=-2x-y\)</div><p><b>الخطوة 3 – اقسم على x:</b></p><div class="formula-box">\(\boxed{y'=-\frac{2x+y}{x}}\)</div><p>هذه هي المشتقة الضمنية، ويمكن ترك الإجابة بدلالة x و y إذا لم يطلب السؤال إيجاد y صراحة.</p><hr><h3>مثال آخر من Sheet 5</h3><div class="formula-box">\(x^2y+y^2x=6\)</div><p>بالتفاضل حدًا حدًا:</p><div class="formula-box">\(2xy+x^2y'+2yy'x+y^2=0\)</div><p>نجمع حدود y′:</p><div class="formula-box">\(y'(x^2+2xy)=-(2xy+y^2)\)</div><div class="formula-box">\(\boxed{y'=-\frac{2xy+y^2}{x^2+2xy}}\)</div>`,
-`<h3>اختبر نفسك قبل رؤية الحل</h3><p>إذا كانت <span dir="ltr">x + 3y² = xy</span>، فما أول سطر صحيح بعد الاشتقاق؟</p><details class="practice-reveal"><summary>إظهار الحل والتفسير</summary><p><span dir="ltr">1 + 6yy′ = y + xy′</span></p><p>لأن مشتقة <span dir="ltr">3y²</span> هي <span dir="ltr">6yy′</span>، ومشتقة <span dir="ltr">xy</span> هي <span dir="ltr">y + xy′</span>.</p><div class="formula-box">\(\boxed{y'=\frac{y-1}{6y-x}}\)</div></details><p class="muted">تنبيه: هذه المسائل منقولة في نمطها من الورقة المصورة، مع كتابة الرموز بصورة أوضح.</p>`,
-`<h3>ملخص الاشتقاق الضمني</h3><ul><li>y متغيرة وليست ثابتة.</li><li>اشتق yⁿ إلى nyⁿ⁻¹y′.</li><li>اشتق xy بقاعدة الضرب: y + xy′.</li><li>اجمع حدود y′ ثم اعزلها.</li></ul><div class="formula-box">\(\boxed{\text{اشتق الطرفين}\;\to\;\text{اجمع }y'\;\to\;\text{اعزل }y'}\)</div>`
-],
-parametric:[
-`<h3>ما معنى التمثيل البارامتري؟</h3><p>في هذا النوع لا تكون y معطاة مباشرة بدلالة x. بدلًا من ذلك يعطينا السؤال معادلتين: <span dir="ltr">x=f(t)</span> و<span dir="ltr">y=g(t)</span>. المتغير t يسمى المتغير الوسيط.</p><p>المطلوب في صور كتابك هو إيجاد ميل المنحنى <span dir="ltr">dy/dx</span>، وأحيانًا المشتقة الثانية.</p>`,
-`<h3>طريقة الحل التي تتبعها في كل سؤال</h3><ol><li>احسب <span dir="ltr">dx/dt</span> من معادلة x.</li><li>احسب <span dir="ltr">dy/dt</span> من معادلة y.</li><li>اقسم مشتقة y بالنسبة إلى t على مشتقة x بالنسبة إلى t.</li><li>إذا طلب قيمة عند t محدد، عوّض في الناتج النهائي.</li><li>للمشتقة الثانية: اشتق <span dir="ltr">dy/dx</span> بالنسبة إلى t ثم اقسم الناتج على <span dir="ltr">dx/dt</span>.</li></ol>`,
-`<h3>القانون بالعربي</h3><p>المشتقة بالنسبة إلى x = مشتقة y بالنسبة إلى t ÷ مشتقة x بالنسبة إلى t.</p><div class="formula-box">\(\frac{dy}{dx}=\frac{\frac{dy}{dt}}{\frac{dx}{dt}}\)</div><p>والمشتقة الثانية:</p><div class="formula-box">\(\frac{d^2y}{dx^2}=\frac{\frac{d}{dt}(\frac{dy}{dx})}{\frac{dx}{dt}}\)</div>`,
-`<h3>مثال مطابق لنمط الصفحة 19</h3><div class="formula-box">\(x=t\ln t,\qquad y=\frac{\ln t}{t}\)</div><p><b>1) اشتق x:</b></p><div class="formula-box">\(\frac{dx}{dt}=\ln t+1\)</div><p><b>2) اشتق y</b> بكتابتها <span dir="ltr">y=(ln t)t⁻¹</span> وبقاعدة الضرب:</p><div class="formula-box">\(\frac{dy}{dt}=\frac{1-\ln t}{t^2}\)</div><p><b>3) اقسم المشتقتين:</b></p><div class="formula-box">\(\boxed{\frac{dy}{dx}=\frac{1-\ln t}{t^2(\ln t+1)}}\)</div><hr><h3>مثال الصفحة 20</h3><div class="formula-box">\(x=2t^2+1,\qquad y=t^3-3t\)</div><div class="formula-box">\(\frac{dx}{dt}=4t,\qquad \frac{dy}{dt}=3t^2-3\)</div><div class="formula-box">\(\boxed{\frac{dy}{dx}=\frac{3t^2-3}{4t}=\frac34t-\frac{3}{4t}}\)</div>`,
-`<h3>المشتقة الثانية في البارامتري</h3><p>لا تشتق <span dir="ltr">dy/dx</span> مباشرة بالنسبة إلى x؛ التعبير ما زال بدلالة t. اشتقه بالنسبة إلى t أولًا ثم اقسم على <span dir="ltr">dx/dt</span>.</p><div class="formula-box">\(\frac{d^2y}{dx^2}=\frac{d}{dt}(\frac{dy}{dx})\div\frac{dx}{dt}\)</div><p>في المثال <span dir="ltr">x=2t²+1, y=t³−3t</span> نحصل على:</p><div class="formula-box">\(\frac{dy}{dx}=\frac34t-\frac{3}{4t}\)</div><div class="formula-box">\(\frac{d}{dt}(\frac{dy}{dx})=\frac34+\frac{3}{4t^2}\)</div><div class="formula-box">\(\boxed{\frac{d^2y}{dx^2}=\frac{3}{16t}+\frac{3}{16t^3}}\)</div>`,
-`<h3>ملخص البارامتري</h3><div class="formula-box">\(\boxed{dy/dx=(dy/dt)/(dx/dt)}\)</div><div class="formula-box">\(\boxed{d^2y/dx^2=[d(dy/dx)/dt]/(dx/dt)}\)</div><p>رتب الحل دائمًا: مشتقة x، مشتقة y، قسمة، ثم التعويض إذا طُلب.</p>`
-],
-logdiff:[
-`<h3>متى أستخدم الاشتقاق اللوغاريتمي؟</h3><p>عندما تكون الدالة فيها متغير في الأس مثل <span dir="ltr">y=x^(sin x)</span>، أو حاصل ضرب وقوى كثيرة يصعب اشتقاقها مباشرة. الفكرة هي أخذ اللوغاريتم الطبيعي للطرفين لتسهيل الأسس والضرب.</p>`,
-`<h3>الخطوات بالترتيب</h3><ol><li>اكتب <span dir="ltr">ln y = ln(الدالة)</span>.</li><li>استخدم خواص اللوغاريتم لتحويل الأس إلى معامل.</li><li>اشتق الطرفين ضمنيًا بالنسبة إلى x، وتذكر أن مشتقة <span dir="ltr">ln y</span> هي <span dir="ltr">y′/y</span>.</li><li>اضرب في y لعزل y′.</li><li>عوّض عن y بالدالة الأصلية في الناتج.</li></ol>`,
-`<h3>القانون المفتاح</h3><div class="formula-box">\(\frac{d}{dx}(\ln y)=\frac{1}{y}\frac{dy}{dx}\)</div><p>خواص نحتاجها: لوغاريتم حاصل الضرب مجموع اللوغاريتمين، ولوغاريتم القسمة فرق اللوغاريتمين، ولوغاريتم القوة يساوي الأس مضروبًا في اللوغاريتم.</p><div class="formula-box">\(\ln(ab)=\ln a+\ln b,\quad \ln(a^n)=n\ln a\)</div>`,
-`<h3>مثال: اشتقاق دالة المتغير في الأس</h3><div class="formula-box">\(y=x^{\sin x}\)</div><p>نأخذ ln للطرفين:</p><div class="formula-box">\(\ln y=\sin x\,\ln x\)</div><p>نشتق الطرفين، والطرف الأيسر يساوي <span dir="ltr">y′/y</span>، والطرف الأيمن بقاعدة الضرب:</p><div class="formula-box">\(\frac{y'}y=\cos x\ln x+\frac{\sin x}{x}\)</div><p>نضرب في y ثم نعوض:</p><div class="formula-box">\(\boxed{y'=x^{\sin x}(\cos x\ln x+\frac{\sin x}{x})}\)</div>`,
-`<h3>تأكد من فهمك</h3><p>في السطر <span dir="ltr">ln y = x ln(sin x)</span>، مشتقة الطرف الأيسر هي <span dir="ltr">y′/y</span>، أما الطرف الأيمن فيحتاج قاعدة الضرب.</p><p>خطأ شائع: نسيان قسمة مشتقة y على y عند اشتقاق ln y.</p>`,
-`<h3>ملخص</h3><p>خذ ln للطرفين، فك اللوغاريتمات، اشتق ضمنيًا، اضرب في y، ثم عوّض عن y.</p><div class="formula-box">\(\boxed{y'=y\times\frac{d}{dx}(\ln f(x))}\)</div>`
-],
-higher:[
-`<h3>ما المقصود بالمشتقات العليا؟</h3><p>المشتقة الثانية هي مشتقة المشتقة الأولى، والثالثة مشتقة الثانية، وهكذا. تظهر هذه الفكرة في الصفحة 19 عند توضيح تكرار قاعدة الاشتقاق، كما ترتبط بمتسلسلة تايلور.</p>`,
-`<h3>طريقة الحل</h3><ol><li>أوجد المشتقة الأولى كاملة.</li><li>اشتق الناتج مرة ثانية للحصول على y′′.</li><li>كرر العملية للحصول على y′′′ أو المشتقة النونية.</li><li>لا تنسَ أن مشتقة الثابت في كل مرحلة تساوي صفرًا.</li></ol>`,
-`<h3>الرموز</h3><div class="formula-box">\(y',\quad y'',\quad y''',\quad y^{(n)}\)</div><p>وبصيغة ليبنتز:</p><div class="formula-box">\(\frac{dy}{dx},\quad\frac{d^2y}{dx^2},\quad\frac{d^ny}{dx^n}\)</div>`,
-`<h3>مثال من نمط Sheet 5</h3><div class="formula-box">\(y=e^{3x-2}\)</div><p>كل مرة نستخدم قاعدة السلسلة، ومشتقة الأس <span dir="ltr">3x−2</span> هي 3.</p><div class="formula-box">\(y'=3e^{3x-2}\)</div><div class="formula-box">\(y''=9e^{3x-2}\)</div><div class="formula-box">\(y'''=27e^{3x-2}\)</div><p>إذن النمط العام:</p><div class="formula-box">\(\boxed{y^{(n)}=3^n e^{3x-2}}\)</div>`,
-`<h3>تدريب سريع</h3><p>إذا كانت <span dir="ltr">y=cos(4x)</span>، فالمشتقات تبدأ هكذا:</p><div class="formula-box">\(y'=-4\sin 4x\)</div><div class="formula-box">\(y''=-16\cos 4x\)</div><div class="formula-box">\(y'''=64\sin 4x\)</div><p>راقب دورة الإشارات والدوال، ولا تنسَ معامل 4 الذي يتكرر مع كل اشتقاق.</p>`,
-`<h3>ملخص</h3><p>المشتقة العليا تعني تكرار الاشتقاق. اكتب كل مرحلة منفصلة، وراقب معامل السلسلة الذي يتكرر في كل مرة.</p>`
-]
-});
-
-
-const laws=[
-['قاعدة الثابت','Constant Rule','مشتقة أي عدد ثابت تساوي صفرًا.','\\(\\frac{d}{dx}(c)=0\\)','عندما يكون الحد رقمًا لا يحتوي على x.'],
-['قاعدة القوة','Power Rule','ننزل الأس ليصبح معاملًا، ثم نطرح واحدًا من الأس.','\\(\\frac{d}{dx}(x^n)=nx^{n-1}\\)','مع القوى الصحيحة والسالبة والكسرية حيث تكون الدالة معرفة.'],
-['قاعدة الجمع والطرح','Sum & Difference','اشتق كل حد على حدة مع الاحتفاظ بالإشارة.','\\(\\frac{d}{dx}(u\\pm v)=\\frac{du}{dx}\\pm\\frac{dv}{dx}\\)','عندما تتكون الدالة من حدود بينها جمع أو طرح.'],
-['قاعدة الضرب','Product Rule','مشتقة الأول في الثاني زائد الأول في مشتقة الثاني.','\\(\\frac{d}{dx}(uv)=u_xv+uv_x\\)','عندما تكون الدالة حاصل ضرب دالتين.'],
-['قاعدة القسمة','Quotient Rule','مشتقة البسط في المقام ناقص البسط في مشتقة المقام، على مربع المقام.','\\(\\frac{d}{dx}(u/v)=\\frac{u_xv-uv_x}{v^2}\\)','عندما تكون الدالة كسرًا بين دالتين.'],
-['قاعدة السلسلة','Chain Rule','مشتقة الدالة الخارجية مضروبة في مشتقة الدالة الداخلية.','\\(\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}\\)','عندما تكون هناك دالة داخل دالة.'],
-['مشتقة الجيب','Sine','مشتقة الجيب هي جيب التمام مضروبًا في مشتقة الداخل.','\\(\\frac{d}{dx}(\\sin u)=u_x\\cos u\\)','في الدوال المثلثية.'],
-['مشتقة جيب التمام','Cosine','مشتقة جيب التمام هي سالب الجيب مضروبًا في مشتقة الداخل.','\\(\\frac{d}{dx}(\\cos u)=-u_x\\sin u\\)','في الدوال المثلثية.'],
-['مشتقة الظل','Tangent','مشتقة الظل هي مربع القاطع مضروبًا في مشتقة الداخل.','\\(\\frac{d}{dx}(\\tan u)=u_x\\sec^2u\\)','في دالة الظل.'],
-['مشتقة الجيب العكسي','Inverse Sine','مشتقة الداخل على الجذر التربيعي لـ 1 ناقص مربع الداخل.','\\(\\frac{d}{dx}(\\sin^{-1}u)=\\frac{u_x}{\\sqrt{1-u^2}}\\)','عندما تكون الدالة Arc Sine.'],
-['مشتقة جيب التمام العكسي','Inverse Cosine','سالب مشتقة الداخل على الجذر التربيعي لـ 1 ناقص مربع الداخل.','\\(\\frac{d}{dx}(\\cos^{-1}u)=-\\frac{u_x}{\\sqrt{1-u^2}}\\)','عندما تكون الدالة Arc Cosine.'],
-['مشتقة الظل العكسي','Inverse Tangent','مشتقة الداخل على 1 زائد مربع الداخل.','\\(\\frac{d}{dx}(\\tan^{-1}u)=\\frac{u_x}{1+u^2}\\)','عندما تكون الدالة Arc Tangent.'],
-['مشتقة ظل التمام','Cotangent','سالب مشتقة الداخل مضروبة في مربع قاطع التمام.','\\(\\frac{d}{dx}(\\cot u)=-u_x\\csc^2u\\)','عندما تكون الدالة cot.'],
-['مشتقة القاطع','Secant','مشتقة الداخل مضروبة في القاطع والظل.','\\(\\frac{d}{dx}(\\sec u)=u_x\\sec u\\tan u\\)','عندما تكون الدالة sec.'],
-['مشتقة قاطع التمام','Cosecant','سالب مشتقة الداخل مضروبة في قاطع التمام وظل التمام.','\\(\\frac{d}{dx}(\\csc u)=-u_x\\csc u\\cot u\\)','عندما تكون الدالة cosec أو csc.'],
-['مشتقة ظل التمام العكسي','Inverse Cotangent','سالب مشتقة الداخل على 1 زائد مربع الداخل.','\\(\\frac{d}{dx}(\\cot^{-1}u)=-\\frac{u_x}{1+u^2}\\)','عندما تكون الدالة Arc Cotangent.'],
-['مشتقة القاطع العكسي','Inverse Secant','مشتقة الداخل على القيمة المطلقة للداخل مضروبة في جذر مربع الداخل ناقص واحد.','\\(\\frac{d}{dx}(\\sec^{-1}u)=\\frac{u_x}{|u|\\sqrt{u^2-1}}\\)','على المجال المعتاد للدالة sec⁻¹.'],
-['مشتقة قاطع التمام العكسي','Inverse Cosecant','سالب مشتقة الداخل على القيمة المطلقة للداخل مضروبة في جذر مربع الداخل ناقص واحد.','\\(\\frac{d}{dx}(\\csc^{-1}u)=-\\frac{u_x}{|u|\\sqrt{u^2-1}}\\)','على المجال المعتاد للدالة csc⁻¹.'],
-['مشتقة الجيب الزائدي','Hyperbolic Sine','مشتقة الجيب الزائدي هي جيب التمام الزائدي مضروبًا في مشتقة الداخل.','\\(\\frac{d}{dx}(\\sinh u)=u_x\\cosh u\\)','في الدوال الزائدية.'],
-['مشتقة جيب التمام الزائدي','Hyperbolic Cosine','مشتقة جيب التمام الزائدي هي الجيب الزائدي مضروبًا في مشتقة الداخل.','\\(\\frac{d}{dx}(\\cosh u)=u_x\\sinh u\\)','في الدوال الزائدية.'],
-['مشتقة الظل الزائدي','Hyperbolic Tangent','مشتقة الداخل مضروبة في مربع القاطع الزائدي.','\\(\\frac{d}{dx}(\\tanh u)=u_x\\sech^2u\\)','في الدوال الزائدية.'],
-['مشتقة ظل التمام الزائدي','Hyperbolic Cotangent','سالب مشتقة الداخل مضروبة في مربع قاطع التمام الزائدي.','\\(\\frac{d}{dx}(\\coth u)=-u_x\\csch^2u\\)','في الدوال الزائدية.'],
-['مشتقة القاطع الزائدي','Hyperbolic Secant','سالب مشتقة الداخل مضروبة في القاطع الزائدي والظل الزائدي.','\\(\\frac{d}{dx}(\\sech u)=-u_x\\sech u\\tanh u\\)','في الدوال الزائدية.'],
-['مشتقة قاطع التمام الزائدي','Hyperbolic Cosecant','سالب مشتقة الداخل مضروبة في قاطع التمام الزائدي وظل التمام الزائدي.','\\(\\frac{d}{dx}(\\csch u)=-u_x\\csch u\\coth u\\)','في الدوال الزائدية.'],
-['مشتقة الجيب الزائدي العكسية','Inverse Hyperbolic Sine','مشتقة الداخل على جذر 1 زائد مربع الداخل.','\\(\\frac{d}{dx}(\\sinh^{-1}u)=\\frac{u_x}{\\sqrt{1+u^2}}\\)','على المجال الحقيقي للدالة.'],
-['مشتقة الظل الزائدي العكسي','Inverse Hyperbolic Tangent','مشتقة الداخل على 1 ناقص مربع الداخل.','\\(\\frac{d}{dx}(\\tanh^{-1}u)=\\frac{u_x}{1-u^2}\\)','عندما |u| أصغر من 1.'],
-
-['مشتقة اللوغاريتم الطبيعي','Natural Log','مشتقة الداخل مقسومة على الداخل.','\\(\\frac{d}{dx}(\\ln u)=\\frac{u_x}{u}\\)','عندما تكون الدالة ln لداخل u موجب.'],
-['مشتقة الدالة الأسية','Exponential','الدالة الأسية e مرفوعة للداخل، مضروبة في مشتقة الأس.','\\(\\frac{d}{dx}(e^u)=u_xe^u\\)','عندما تكون الدالة e مرفوعة لقوة.'],
-['قاعدة لوبيتال','L’Hôpital','في صورتي 0/0 أو ∞/∞ ومع تحقق الشروط، يمكن اشتقاق البسط والمقام كلٌّ على حدة.','\\(\\lim\\frac{f(x)}{g(x)}=\\lim\\frac{f_x(x)}{g_x(x)}\\)','تحتاج التحقق من شروط النظرية قبل استخدامها.'],
-['متسلسلة ماكلورين','Maclaurin','متسلسلة تايلور عندما يكون مركز التوسع صفرًا.','\\(f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(0)}{n!}x^n\\)','لتقريب الدوال حول x=0 عند تحقق التقارب.'],
-['متسلسلة تايلور','Taylor','توسع الدالة حول نقطة عامة a باستخدام مشتقاتها عند a.','\\(f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(x-a)^n\\)','لتقريب الدوال حول نقطة a عند تحقق شروط التوسع والتقارب.']
-];
-
-laws.push(
-['مشتقة الجيب الزائدي العكسية','Inverse Hyperbolic Sine','مشتقة الداخل مقسومة على جذر واحد زائد مربع الداخل.','\(\frac{d}{dx}(\sinh^{-1}u)=\frac{u\prime}{\sqrt{1+u^2}}\)','عند ظهور sinh⁻¹ أو asinh.'],
-['مشتقة جيب التمام الزائدي العكسي','Inverse Hyperbolic Cosine','مشتقة الداخل مقسومة على جذر مربع الداخل ناقص واحد.','\(\frac{d}{dx}(\cosh^{-1}u)=\frac{u\prime}{\sqrt{u^2-1}}\)','على المجال الحقيقي المعتاد u>1.'],
-['مشتقة الظل الزائدي العكسي','Inverse Hyperbolic Tangent','مشتقة الداخل على واحد ناقص مربع الداخل.','\(\frac{d}{dx}(\tanh^{-1}u)=\frac{u\prime}{1-u^2}\)','عندما |u|<1.'],
-['مشتقة ظل التمام الزائدي العكسي','Inverse Hyperbolic Cotangent','مشتقة الداخل على واحد ناقص مربع الداخل.','\(\frac{d}{dx}(\coth^{-1}u)=\frac{u\prime}{1-u^2}\)','على المجال الحقيقي |u|>1 وفق التعريف المعتاد.'],
-['مشتقة القاطع الزائدي العكسي','Inverse Hyperbolic Secant','سالب مشتقة الداخل على القيمة المطلقة للداخل مضروبة في جذر واحد ناقص مربع الداخل.','\(\frac{d}{dx}(\sech^{-1}u)=-\frac{u\prime}{|u|\sqrt{1-u^2}}\)','على المجال 0<u≤1.'],
-['مشتقة قاطع التمام الزائدي العكسي','Inverse Hyperbolic Cosecant','سالب مشتقة الداخل على القيمة المطلقة للداخل مضروبة في جذر واحد زائد مربع الداخل.','\(\frac{d}{dx}(\csch^{-1}u)=-\frac{u\prime}{|u|\sqrt{1+u^2}}\)','على المجال الحقيقي u≠0.']
-);
-
-const state=JSON.parse(localStorage.getItem('mathMasterState')||'{}');
-state.notes=state.notes||'';
-state.completed=state.completed||[];
-state.quizCount=state.quizCount||0;
-state.quizErrors=state.quizErrors||[];
-
-function save(){localStorage.setItem('mathMasterState',JSON.stringify(state));
-updateStats()}
-function toast(m){const t=document.getElementById('toast');
-t.textContent=m;
-t.classList.add('show');
-setTimeout(()=>t.classList.remove('show'),2300)}
-function typeset(el=document.body){if(window.MathJax?.typesetPromise)MathJax.typesetPromise([el]).catch(()=>{});
-}
-function showPage(n){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById('page-'+n).classList.add('active');
-document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===n));
-document.getElementById('crumb').textContent=({home:'الرئيسية',lessons:'خريطة المنهج',study:'غرفة المذاكرة',practice:'التدريبات والاختبارات',laws:'مكتبة القوانين',calculator:'الآلة الحاسبة',videos:'فيديوهات الشرح',notes:'ملاحظاتي',progress:'تقارير التقدم',settings:'البيانات والإعدادات'})[n];
-document.getElementById('sidebar').classList.remove('open');
-window.scrollTo({top:0,behavior:'smooth'});
-typeset()}
-document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
-document.getElementById('menuBtn').onclick=()=>document.getElementById('sidebar').classList.toggle('open');
-
-function topicCard(t){return `<article class="card topic-card"><div class="topic-top"><div class="card-icon">${t.icon}</div><span class="tag ${t.source==='received'?'ready':'wait'}">${t.source==='received'?'من الأوراق المرسلة':'مذكور بانتظار ورقته'}</span></div><div><h3>${t.name}</h3><p dir="ltr" style="text-align:right">${t.en}</p></div><p>${t.desc}</p><div class="muted" style="font-size:10px">${t.sheets}</div><button class="btn" onclick="openTopic('${t.id}')">ابدأ المذاكرة ←</button></article>`}
-const quizBank=[
-{q:'إذا كانت y = x⁵ + 3x³ + 8x + 7، فما المشتقة؟',o:['5x⁴ + 9x² + 8','5x⁴ + 3x² + 8','x⁴ + 9x² + 7'],a:0,e:'نشتق كل حد: 5x⁴ ثم 9x² ثم 8، ومشتقة الثابت صفر.'},
-{q:'إذا كانت y = tan⁻¹(x²)، فما المشتقة؟',o:['2x/(1+x⁴)','1/(1+x²)','−2x/(1+x⁴)'],a:0,e:'قانون الظل العكسي: مشتقة الداخل على 1 زائد مربع الداخل.'},
-{q:'ما الوصف الصحيح لقاعدة السلسلة؟',o:['مشتقة الأول في الثاني زائد الأول في مشتقة الثاني','مشتقة الخارج مضروبة في مشتقة الداخل','مشتقة البسط في المقام على مربع المقام'],a:1,e:'قاعدة السلسلة تستخدم مع الدالة داخل الدالة.'},
-{q:'مشتقة cos(3x) تساوي:',o:['sin(3x)','−sin(3x)','−3sin(3x)'],a:2,e:'مشتقة cos سالبة sin، ونضرب في مشتقة الداخل 3.'},
-{q:'مشتقة ln(x²+1) تساوي:',o:['2x/(x²+1)','1/(x²+1)','2x ln(x²+1)'],a:0,e:'مشتقة ln(u) هي مشتقة الداخل على الداخل.'},
-{q:'أي صورة من الصور التالية تسمح بالنظر في تطبيق لوبيتال؟',o:['1/0 فقط','0/0 أو ∞/∞','أي كسر جبري'],a:1,e:'من أشهر صور لوبيتال غير المعينة صفر/صفر أو ما لا نهاية/ما لا نهاية، مع تحقق الشروط.'},
-{q:'متسلسلة ماكلورين هي متسلسلة تايلور حول:',o:['a=1','a=−1','a=0'],a:2,e:'ماكلورين هي الحالة الخاصة من تايلور عندما يكون مركز التوسع صفرًا.'},
-{q:'مشتقة sinh(x) هي:',o:['cosh(x)','−cosh(x)','sech²(x)'],a:0,e:'مشتقة sinh هي cosh.'}
-];
-
-let quizRun=[],quizIndex=0,quizScore=0,quizLocked=false;
-
-function startQuiz(){quizRun=[...quizBank].sort(()=>Math.random()-.5).slice(0,5);
-quizIndex=0;
-quizScore=0;
-quizLocked=false;
-drawQuiz()}
-function drawQuiz(){const q=quizRun[quizIndex];
-document.getElementById('quizQuestion').textContent=q.q;
-document.getElementById('quizProgress').textContent=`السؤال ${quizIndex+1} من ${quizRun.length}`;
-document.getElementById('quizOptions').innerHTML=q.o.map((o,i)=>`<button class="quiz-option" onclick="answerQuiz(${i})">${o}</button>`).join('');
-document.getElementById('quizFeedback').innerHTML='';
-document.getElementById('quizNext').disabled=true;
-document.getElementById('quizNext').textContent=quizIndex===quizRun.length-1?'إنهاء الاختبار':'السؤال التالي';
-quizLocked=false;
-}
-function answerQuiz(i){if(quizLocked)return;
-quizLocked=true;
-const q=quizRun[quizIndex],ok=i===q.a;
-const buttons=[...document.querySelectorAll('#quizOptions button')];
-buttons.forEach((b,j)=>{b.disabled=true;
-if(j===q.a)b.classList.add('correct');
-if(j===i&&!ok)b.classList.add('wrong')});
-if(ok)quizScore++;
-else{state.quizErrors.push({question:q.q,chosen:q.o[i],correct:q.o[q.a],explanation:q.e});
-save()}document.getElementById('quizFeedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b>${ok?'إجابة صحيحة ✓':'إجابة غير صحيحة'}</b><br>${q.e}<br>الإجابة الصحيحة: ${q.o[q.a]}</div>`;
-document.getElementById('quizNext').disabled=false;
-}
-function nextQuiz(){if(!quizLocked)return;
-if(quizIndex<quizRun.length-1){quizIndex++;
-drawQuiz()}else{state.quizCount++;
-state.lastScore=quizScore+'/'+quizRun.length;
-save();
-document.getElementById('quizQuestion').textContent=`انتهى الاختبار: ${quizScore} من ${quizRun.length}`;
-document.getElementById('quizOptions').innerHTML='';
-document.getElementById('quizFeedback').innerHTML='<div class="feedback good">راجع الإجابات والتفسيرات، ثم ابدأ اختبارًا جديدًا بأسئلة بترتيب مختلف.</div>';
-document.getElementById('quizNext').disabled=true;
-document.getElementById('quizStart').textContent='إعادة الاختبار';
-updateQuizStats()}}
-function updateQuizStats(){document.getElementById('quizTotal').textContent=state.quizCount;
-document.getElementById('errorTotal').textContent=state.quizErrors.length;
-document.getElementById('lastScore').textContent=state.lastScore||'—';
-document.getElementById('errorReview').innerHTML=state.quizErrors.length?state.quizErrors.slice(-8).reverse().map(x=>`<div style="border-bottom:1px solid var(--line);padding:9px 0"><b>${x.question}</b><p style="color:var(--red)">إجابتك: ${x.chosen}</p><p style="color:var(--green)">الصحيح: ${x.correct}</p><small>${x.explanation}</small></div>`).join(''):'لم تسجل أخطاء بعد.'}
-document.getElementById('quizStart').onclick=startQuiz;
-document.getElementById('quizNext').onclick=nextQuiz;
-
-function renderTopics(){document.getElementById('topicCount').textContent=topics.length;
-document.getElementById('homeTopics').innerHTML=topics.slice(0,6).map(topicCard).join('');
-const q=(document.getElementById('topicSearch')?.value||'').toLowerCase(),f=document.getElementById('topicFilter')?.value||'all';
-document.getElementById('allTopics').innerHTML=topics.filter(t=>(f==='all'||(f==='received'?t.source==='received':t.source==='mentioned'))&&(t.name+' '+t.en+' '+t.desc).toLowerCase().includes(q)).map(topicCard).join('')}
-document.getElementById('topicSearch').addEventListener('input',renderTopics);
-document.getElementById('topicFilter').addEventListener('change',renderTopics);
-
-function openTopic(id){const t=topics.find(x=>x.id===id);
-showPage('study');
-const content=lessons[id];
-const tabs=document.getElementById('lessonTabs');
-const panel=document.getElementById('lessonContent');
-if(!content){panel.innerHTML=`<h3>${t.name}</h3><p>${t.desc}</p><div class="notice">هذا الباب مذكور في خطة المنهج، لكن لا توجد له صفحة تفصيلية ضمن الصور المرسلة حتى الآن. المعروض في مكتبة القوانين تأسيسي، ولن ننسب أمثلة غير موجودة إلى ورقة الدكتور.</div>`;
-tabs.innerHTML='';
-return;
-}const labels=lessonTabs;
-tabs.innerHTML=labels.map((x,i)=>`<button class="${i===0?'selected':''}" data-tab="${i}"><span class="tab-number">0${i+1}</span>${x}</button>`).join('')+`<button class="finish-lesson" onclick="markDone('${id}')">✓ أنهيت هذا الباب</button>`;
-function draw(i){panel.innerHTML=`<div class="lesson-kicker">ALAMBRATOR STUDY PATH <span>الجزء ${i+1} من ${content.length}</span></div>${content[i]}<div class="lesson-controls"><button class="btn" ${i===0?'disabled':''} onclick="lessonStep(${i-1})">→ السابق</button><div class="lesson-dots">${content.map((_,j)=>`<button class="${j===i?'on':''}" aria-label="الجزء ${j+1}" onclick="lessonStep(${j})"></button>`).join('')}</div><button class="btn primary" ${i===content.length-1?'disabled':''} onclick="lessonStep(${i+1})">التالي ←</button></div>`;
-tabs.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('selected',Number(b.dataset.tab)===i));
-typeset(panel);
-panel.scrollIntoView({behavior:'smooth',block:'start'});
-}window.lessonStep=draw;
-tabs.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>draw(Number(b.dataset.tab))));
-draw(0);
-window.currentTopic=id;
-}
-function markDone(id){if(!state.completed.includes(id))state.completed.push(id);
-save();
-toast('تم تسجيل إنجاز الدرس ✓')}
-function updateStats(){let done=state.completed.length,pct=Math.round(done/topics.length*100);
-['doneCount','pDone'].forEach(id=>document.getElementById(id).textContent=done);
-['quizCount','pQuiz'].forEach(id=>document.getElementById(id).textContent=state.quizCount);
-document.getElementById('percentCount').innerHTML=pct+'<span class="unit">%</span>';
-document.getElementById('pPercent').textContent=pct+'%';
-document.getElementById('progressBar').style.width=pct+'%';
-if(document.getElementById('quizTotal'))updateQuizStats()}
-function renderLaws(){const q=(document.getElementById('lawSearch').value||'').toLowerCase();
-document.getElementById('lawList').innerHTML=laws.filter(x=>x.join(' ').toLowerCase().includes(q)).map(x=>`<article class="card"><div class="topic-top"><h3>${x[0]}</h3><span class="tag">${x[1]}</span></div><p>${x[2]}</p><div class="formula-box">${x[3]}</div><p><b>متى أستخدمه؟</b> ${x[4]}</p></article>`).join('')||'<div class="notice">لا توجد نتائج مطابقة.</div>';
-typeset(document.getElementById('lawList'))}document.getElementById('lawSearch').addEventListener('input',renderLaws);
-
-const notes=document.getElementById('notes');
-notes.value=state.notes;
-notes.addEventListener('input',()=>{state.notes=notes.value;
-save();
-document.getElementById('noteStatus').textContent='تم الحفظ تلقائيًا ✓'});
-document.getElementById('clearNotes').onclick=()=>{if(confirm('هل تريد مسح كل الملاحظات؟')){notes.value='';
-state.notes='';
-save();
-toast('تم مسح الملاحظات')}};
-
-function exportData(){const blob=new Blob([JSON.stringify({app:'Math Master',version:2,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'});
-const a=document.createElement('a');
-a.href=URL.createObjectURL(blob);
-a.download='math-master-backup.json';
-a.click();
-URL.revokeObjectURL(a.href);
-toast('تم تجهيز النسخة الاحتياطية')}document.getElementById('exportBtn').onclick=exportData;
-document.getElementById('exportTop').onclick=exportData;
-document.getElementById('importFile').addEventListener('change',async e=>{const f=e.target.files[0];
-if(!f)return;
-try{const d=JSON.parse(await f.text());
-if(d.app!=='Math Master'||!d.state)throw 0;
-Object.assign(state,d.state);
-save();
-notes.value=state.notes||'';
-toast('تم استيراد البيانات')}catch{toast('ملف النسخة الاحتياطية غير صالح')}});
-document.getElementById('themeBtn').onclick=()=>{document.body.classList.toggle('light');
-toast('تم تبديل المظهر إن كان نمط الإضاءة معرفًا في المتصفح')};
-
-// Calculator powered by Math.js. Symbolic differentiation; numerical integration, limits and roots are explicitly approximate.
-const calcInput=document.getElementById('calcDisplay'),calcOut=document.getElementById('calcResult');
-
-document.querySelectorAll('[data-insert]').forEach(b=>b.addEventListener('click',()=>{const a=calcInput.selectionStart??calcInput.value.length,z=calcInput.selectionEnd??a,v=b.dataset.insert;
-calcInput.value=calcInput.value.slice(0,a)+v+calcInput.value.slice(z);
-calcInput.focus();
-calcInput.setSelectionRange(a+v.length,a+v.length)}));
-
-document.getElementById('calcClear').onclick=()=>{calcInput.value='';
-calcOut.innerHTML='تم مسح التعبير.'};
-document.getElementById('calcBack').onclick=()=>{const a=calcInput.selectionStart??calcInput.value.length;
-calcInput.value=calcInput.value.slice(0,Math.max(0,a-1))+calcInput.value.slice(a);
-calcInput.focus()};
-
-function fmt(n){if(!Number.isFinite(n))throw Error('الناتج غير معرف أو خارج نطاق الحساب');
-return Number(n.toPrecision(11)).toString()}
-function runCalc(){if(!window.math){calcOut.textContent='محرك الحساب لم يحمّل. تحقق من اتصال الإنترنت ثم أعد المحاولة.';
-return}const m=math,expr=calcInput.value.trim(),mode=document.getElementById('calcMode').value,a=Number(document.getElementById('calcA').value),b=Number(document.getElementById('calcB').value);
-try{if(!expr)throw Error('اكتب تعبيرًا رياضيًا أولًا');
-let html='';
-if(mode==='eval'){const val=m.evaluate(expr,{x:a});
-html=`<h3>الحساب بالتعويض</h3><p>نعوّض عن x بالقيمة ${fmt(a)} في التعبير.</p><div class="formula-box">\\(${expr.replace(/\\/g,'\\\\')}\\)</div><p><b>الناتج العددي:</b> ${fmt(val)}</p>`;
-}else if(mode==='derivative'||mode==='derivative2'){const node=m.parse(expr),der=m.derivative(node,'x');
-const second=(mode==='derivative2'||mode==='derivative3')?m.derivative(der,'x'):null;
-const third=mode==='derivative3'?m.derivative(second,'x'):null;
-const simp=m.simplify(mode==='derivative3'?third:(mode==='derivative2'?second:der)).toString();
-let rule='تم اشتقاق التعبير رمزيًا مع تطبيق قواعد الاشتقاق المناسبة.';
-if(/\+/.test(expr))rule='يظهر جمع بين حدود؛ تُشتق الحدود كلٌّ على حدة.';
-if(/\*/.test(expr))rule='يظهر حاصل ضرب؛ تُستخدم قاعدة الضرب عند الحاجة.';
-if(/\//.test(expr))rule='يظهر كسر؛ تُستخدم قاعدة القسمة أو إعادة كتابة التعبير.';if(/sin|cos|tan|ln|exp|\^/.test(expr))rule+=' وقد تدخل قاعدة السلسلة للدوال المركبة.';html=`<h3>${mode==='derivative3'?'المشتقة الثالثة رمزيًا':(mode==='derivative2'?'المشتقة الثانية رمزيًا':'المشتقة الأولى رمزيًا')} بالنسبة إلى x</h3><p>${rule}</p><p>الدالة الأصلية:</p><div class="formula-box">\\(y=${expr}\\)</div><p>${mode==='derivative3'?'المشتقة الثالثة التي أعادها محرك الجبر الرمزي:':(mode==='derivative2'?'المشتقة الثانية التي أعادها محرك الجبر الرمزي:':'المشتقة التي أعادها محرك الجبر الرمزي:')}</p><div class="formula-box">${mode==='derivative2'?`\\(y''=${simp}\\)`:`\\(y'=${simp}\\)`}</div><p class="muted">هذه نتيجة رمزية مبسطة آليًا؛ راجع مجال الدالة وأي شروط خاصة قبل اعتمادها في الحل اليدوي.</p>`;}else if(mode==='integral'){const f=x=>m.evaluate(expr,{x});const n=1000,h=(b-a)/n;let sum=f(a)+f(b);for(let i=1;i<n;i++)sum+=(i%2?4:2)*f(a+i*h);const val=sum*h/3;html=`<h3>التكامل المحدد العددي – قاعدة سمبسون</h3><p>تم تقسيم الفترة من ${fmt(a)} إلى ${fmt(b)} إلى 1000 جزء متساوٍ.</p><div class="formula-box">\\(\\int_{${fmt(a)}}^{${fmt(b)}}(${expr})\\,dx\\)</div><p>قاعدة سمبسون: نضرب مجموع قيم الدالة بأوزان 1 و4 و2 بالتناوب في h/3.</p><p><b>القيمة التقريبية:</b> ${fmt(val)}</p>`;}else if(mode==='limit'){const f=x=>m.evaluate(expr,{x});const h=Math.max(1e-7,Math.abs(a)*1e-7);const left=f(a-h),right=f(a+h);html=`<h3>تقدير النهاية عدديًا</h3><p>نحسب قيمة التعبير قرب النقطة من اليسار واليمين، باستخدام فرق صغير h = ${h}.</p><div class="formula-box">\\(\\lim_{x\\to ${fmt(a)}}(${expr})\\)</div><p>من اليسار ≈ ${fmt(left)}، ومن اليمين ≈ ${fmt(right)}.</p><p><b>التقدير:</b> ${Math.abs(left-right)<1e-4*Math.max(1,Math.abs(left),Math.abs(right))?fmt((left+right)/2):'القيمتان غير متقاربتين؛ قد لا توجد النهاية أو تحتاج تحليلًا رمزيًا.'}</p><p class="muted">هذا فحص عددي وليس تطبيقًا آليًا لنظرية لوبيتال، ولا يثبت وجود النهاية.</p>`;}else if(mode==='solve'){const f=x=>m.evaluate(expr,{x}),df=x=>m.evaluate(m.derivative(expr,'x'),{x});let x=a,ok=false;for(let i=0;i<60;i++){const y=f(x),d=df(x);if(Math.abs(y)<1e-10){ok=true;break}if(!Number.isFinite(d)||Math.abs(d)<1e-14)break;const nx=x-y/d;if(!Number.isFinite(nx)||Math.abs(nx)>1e12)break;if(Math.abs(nx-x)<1e-12){x=nx;ok=Math.abs(f(x))<1e-7;break}x=nx}html=`<h3>حل عددي للمعادلة</h3><p>نبحث عن جذر للمعادلة:</p><div class="formula-box">\\(${expr}=0\\)</div><p>باستخدام طريقة نيوتن، وبداية تخمين x₀ = ${fmt(a)}.</p>${ok?`<p><b>الجذر التقريبي:</b> x ≈ ${fmt(x)}</p><p>التحقق: f(x) ≈ ${fmt(f(x))}</p>`:'<p>لم تتقارب طريقة نيوتن من نقطة البداية المختارة. جرّب قيمة بداية مختلفة أو استخدم طريقة تحليل أخرى.</p>'}`;}calcOut.innerHTML=html;typeset(calcOut)}catch(e){calcOut.innerHTML=`<div class="feedback bad">تعذر تنفيذ العملية: ${e.message}. راجع الأقواس وكتابة الدوال واستخدم * للضرب و^ للأس.</div>`}}
-document.getElementById('calcEqual').onclick=runCalc;
-calcInput.addEventListener('keydown',e=>{if(e.key==='Enter')runCalc()});
-
-renderTopics();
-renderLaws();
-updateStats();
-updateQuizStats();
-typeset();
-
-</script>
-
-<script>
-/* ===== ALAMBRATOR MATH ACADEMY v4 — persistent learning layer ===== */
-(function(){
-  const $=id=>document.getElementById(id);
-  const safe=(v,d)=>v===undefined||v===null?d:v;
-  state.lastPage=safe(state.lastPage,'home');
-  state.lastTopic=safe(state.lastTopic,'');
-  state.lastStep=safe(state.lastStep,0);
-  state.theme=safe(state.theme,'dark');
-  state.font=safe(state.font,'Cairo');
-  state.lastActivity=safe(state.lastActivity,'');
-  state.lessonQuizResults=state.lessonQuizResults||{};
-  state.testHistory=state.testHistory||[];
-  state.activeTest=safe(state.activeTest,0);
-  const baseSave=save;
-  window.save=function(){state.lastActivity=new Date().toISOString();localStorage.setItem('mathMasterState',JSON.stringify(state));updateStats()};
-  function applyPrefs(){document.body.classList.remove('light','midnight','font-tajawal','font-almarai','font-system');if(state.theme==='light')document.body.classList.add('light');if(state.theme==='midnight')document.body.classList.add('midnight');if(state.font==='Tajawal')document.body.classList.add('font-tajawal');if(state.font==='Almarai')document.body.classList.add('font-almarai');if(state.font==='system-ui')document.body.classList.add('font-system');if($('themeSelect'))$('themeSelect').value=state.theme;if($('fontSelect'))$('fontSelect').value=state.font;}
-  const oldShowPage=showPage;
-  window.showPage=function(n){if(n==='progress')n='home';state.lastPage=n;state.lastActivity=new Date().toISOString();localStorage.setItem('mathMasterState',JSON.stringify(state));oldShowPage(n);};
-  // Keep terminology grouped by the mathematical family, not literal mistranslations.
-  const lawNameFix={
-    'مشتقة الجيب العكسي':'مشتقة الجيب العكسي (قوس الجيب)',
-    'مشتقة جيب التمام العكسي':'مشتقة جيب التمام العكسي (قوس جيب التمام)',
-    'مشتقة الظل العكسي':'مشتقة الظل العكسي (قوس الظل)',
-    'مشتقة ظل التمام العكسي':'مشتقة ظل التمام العكسي (قوس ظل التمام)',
-    'مشتقة القاطع العكسي':'مشتقة القاطع العكسي (قوس القاطع)',
-    'مشتقة قاطع التمام العكسي':'مشتقة قاطع التمام العكسي (قوس قاطع التمام)',
-    'مشتقة الجيب الزائدي العكسي':'مشتقة الجيب الزائدي العكسي',
-    'مشتقة جيب التمام الزائدي العكسي':'مشتقة جيب التمام الزائدي العكسي',
-    'مشتقة الظل الزائدي العكسي':'مشتقة الظل الزائدي العكسي'
-  };
-  laws.forEach(x=>{if(lawNameFix[x[0]])x[0]=lawNameFix[x[0]];x[3]=x[3].replace(/\\prime/g,"'").replace(/\u000c/g,'');});
-  // Correct the inverse hyperbolic naming and formula rendering from malformed legacy literals.
-  const hyperFix={
-    'مشتقة الجيب الزائدي العكسي':'\\(\\frac{d}{dx}(\\sinh^{-1}u)=\\frac{u_x}{\\sqrt{1+u^2}}\\)',
-    'مشتقة جيب التمام الزائدي العكسي':'\\(\\frac{d}{dx}(\\cosh^{-1}u)=\\frac{u_x}{\\sqrt{u^2-1}}\\)',
-    'مشتقة الظل الزائدي العكسي':'\\(\\frac{d}{dx}(\\tanh^{-1}u)=\\frac{u_x}{1-u^2}\\)',
-    'مشتقة ظل التمام الزائدي العكسي':'\\(\\frac{d}{dx}(\\coth^{-1}u)=\\frac{u_x}{1-u^2}\\)',
-    'مشتقة القاطع الزائدي العكسي':'\\(\\frac{d}{dx}(\\sech^{-1}u)=-\\frac{u_x}{|u|\\sqrt{1-u^2}}\\)',
-    'مشتقة قاطع التمام الزائدي العكسي':'\\(\\frac{d}{dx}(\\csch^{-1}u)=-\\frac{u_x}{|u|\\sqrt{1+u^2}}\\)'
-  };
-  laws.forEach(x=>{if(hyperFix[x[0]]){x[3]=hyperFix[x[0]];x[2]='نشتق الدالة الداخلية أولًا، ثم نقسم على المقام الموضح في القانون؛ ويجب التأكد من مجال الدالة.';}});
-  const lawSeen=new Set();for(let i=laws.length-1;i>=0;i--){const k=laws[i][0];if(lawSeen.has(k))laws.splice(i,1);else lawSeen.add(k);}
-  const originalRenderLaws=renderLaws;
-  window.renderLaws=function(){const q=($('lawSearch')?.value||'').toLowerCase();const groups=[
-    ['قوانين الاشتقاق الأساسية',x=>['قاعدة الثابت','قاعدة القوة','قاعدة الجمع والطرح','قاعدة الضرب','قاعدة القسمة','قاعدة السلسلة'].includes(x[0])],
-    ['الدوال المثلثية',x=>['مشتقة الجيب','مشتقة جيب التمام','مشتقة الظل','مشتقة ظل التمام','مشتقة القاطع','مشتقة قاطع التمام'].includes(x[0])],
-    ['الدوال المثلثية العكسية',x=>/العكسي/.test(x[0])&&!/زائدي/.test(x[0])],
-    ['الدوال الزائدية',x=>/الزائدي/.test(x[0])&&!/العكسي/.test(x[0])],
-    ['الدوال الزائدية العكسية',x=>/زائدي/.test(x[0])&&/العكسي/.test(x[0])],
-    ['الدوال الأسية واللوغاريتمية',x=>/لوغاريتم|أسية/.test(x[0])],
-    ['النظريات والمتسلسلات',x=>/لوبيتال|تايلور|ماكلورين/.test(x[0])]
-  ];
-  let html='';groups.forEach(([title,fn])=>{const arr=laws.filter(x=>fn(x)&&(x.join(' ').toLowerCase().includes(q)));if(arr.length){html+=`<h2 class="law-category">${title}</h2>`+arr.map(x=>`<article class="card"><div class="topic-top"><h3>${x[0]}</h3><span class="tag">${x[1]}</span></div><p>${x[2]}</p><div class="formula-box">${x[3]}</div><p><b>متى أستخدمه؟</b> ${x[4]}</p></article>`).join('')}});
-  $('lawList').innerHTML=html||'<div class="notice">لا توجد نتائج مطابقة.</div>';typeset($('lawList'));
-  };
-  // A larger bank: questions are kept as authored options with a clear single correct answer.
-  quizBank.push(
-   {q:'إذا كانت y = (3x+1)⁵، فما المشتقة؟',o:['15(3x+1)⁴','5(3x+1)⁴','3(3x+1)⁵'],a:0,e:'قاعدة السلسلة: ننزل الأس 5 ثم نضرب في مشتقة الداخل 3.'},
-   {q:'مشتقة e^(2x) تساوي:',o:['e^(2x)','2e^(2x)','2xe^(2x)'],a:1,e:'مشتقة e^u هي u′e^u، ومشتقة 2x تساوي 2.'},
-   {q:'مشتقة ln(5x) تساوي:',o:['1/x','5/x','ln(5)'],a:0,e:'مشتقة ln(u) هي u′/u؛ إذن 5/(5x)=1/x.'},
-   {q:'إذا كانت x=2t و y=t²، فإن dy/dx تساوي:',o:['t','2t','t/2'],a:0,e:'المشتقة البارامترية = (dy/dt)/(dx/dt)=2t/2=t.'},
-   {q:'إذا كانت y=sin⁻¹(3x)، فالمشتقة:',o:['3/√(1−9x²)','1/√(1−9x²)','−3/√(1−9x²)'],a:0,e:'قانون الجيب العكسي: مشتقة الداخل على جذر 1 ناقص مربع الداخل.'},
-   {q:'مشتقة cosh(x) هي:',o:['sinh(x)','−sinh(x)','sech²(x)'],a:0,e:'مشتقة جيب التمام الزائدي هي الجيب الزائدي.'},
-   {q:'مشتقة tanh(2x) تساوي:',o:['sech²(2x)','2sech²(2x)','−2sech²(2x)'],a:1,e:'مشتقة الظل الزائدي = مشتقة الداخل × مربع القاطع الزائدي.'},
-   {q:'إذا كانت y=x³ ln x، نستخدم أساسًا:',o:['قاعدة الضرب','قاعدة القسمة فقط','قاعدة القوة فقط'],a:0,e:'الدالة حاصل ضرب x³ في ln x، لذلك نستخدم قاعدة الضرب.'},
-   {q:'مشتقة (x²+1)/(x) يمكن إيجادها باستخدام:',o:['قاعدة القسمة','قاعدة السلسلة فقط','قاعدة الثابت'],a:0,e:'الصيغة كسر بين دالتين؛ قاعدة القسمة مناسبة، ويمكن تبسيطها أولًا.'},
-   {q:'المشتقة الثانية تعني:',o:['اشتقاق المشتقة الأولى مرة أخرى','تربيع المشتقة الأولى','اشتقاق الدالة مرتين دون ترتيب'],a:0,e:'نوجد y′ أولًا ثم نشتقها لنحصل على y″.'},
-   {q:'في متسلسلة تايلور حول a، نستخدم القوى:',o:['(x−a)^n','x^n فقط دائمًا','(x+a)^n دائمًا'],a:0,e:'مركز التوسع a يجعل حدود المتسلسلة على صورة (x−a)^n.'},
-   {q:'متسلسلة ماكلورين هي تايلور عندما:',o:['a=0','a=1','a→∞'],a:0,e:'ماكلورين حالة خاصة يكون فيها مركز التوسع صفرًا.'},
-   {q:'قبل تطبيق قاعدة لوبيتال يجب:',o:['التحقق من صورة غير معينة وشروط النظرية','اشتقاق المقام فقط','تعويض صفر دائمًا'],a:0,e:'لا تطبق القاعدة إلا بعد التأكد من صورة 0/0 أو ∞/∞ وتحقق الشروط.'},
-   {q:'مشتقة cot(x) تساوي:',o:['−cosec²(x)','sec²(x)','cosec²(x)'],a:0,e:'مشتقة ظل التمام سالبة مربع قاطع التمام.'},
-   {q:'مشتقة sec(x) تساوي:',o:['sec(x)tan(x)','−sec(x)tan(x)','sec²(x)'],a:0,e:'مشتقة القاطع هي القاطع في الظل.'},
-   {q:'إذا y=cos(x²)، فالمشتقة:',o:['−2x sin(x²)','−sin(x²)','2x cos(x²)'],a:0,e:'مشتقة cos سالبة sin، ثم نضرب في مشتقة الداخل x² وهي 2x.'},
-   {q:'مشتقة sinh(4x) تساوي:',o:['4cosh(4x)','cosh(4x)','4sinh(4x)'],a:0,e:'مشتقة الجيب الزائدي هي جيب التمام الزائدي في مشتقة الداخل.'},
-   {q:'مشتقة cos⁻¹(x) تساوي:',o:['−1/√(1−x²)','1/√(1−x²)','−1/(1+x²)'],a:0,e:'مشتقة جيب التمام العكسي سالبة.'},
-   {q:'مشتقة tan⁻¹(5x) تساوي:',o:['5/(1+25x²)','1/(1+25x²)','5/(1+5x²)'],a:0,e:'مشتقة الظل العكسي: مشتقة الداخل على 1 زائد مربع الداخل.'},
-   {q:'إذا y=x⁴، فإن y″ تساوي:',o:['12x²','4x³','24x'],a:0,e:'y′=4x³ ثم y″=12x².'},
-   {q:'مشتقة ln(sin x) تساوي:',o:['cot x','tan x','cos x'],a:0,e:'مشتقة ln(u)=u′/u؛ cos x/sin x=cot x.'},
-   {q:'إذا كانت y=e^x، فإن المشتقة الثالثة:',o:['e^x','3e^x','0'],a:0,e:'مشتقة e^x تظل e^x عند كل رتبة.'},
-   {q:'في الاشتقاق الضمني، عند اشتقاق y² بالنسبة إلى x:',o:['2y y′','2y','2y′'],a:0,e:'نعتبر y دالة في x، فنطبق السلسلة.'},
-   {q:'إذا x=f(t), y=g(t)، فإن dy/dx:',o:['(dy/dt)/(dx/dt)','(dx/dt)/(dy/dt)','dx/dt + dy/dt'],a:0,e:'هذه قاعدة اشتقاق الدوال البارامترية.'}
-  );
-  const tests=[
-   'اختبار أساسيات الاشتقاق','اختبار قاعدة السلسلة','اختبار الدوال المثلثية','اختبار الدوال المثلثية العكسية','اختبار الدوال الزائدية','اختبار الدوال الزائدية العكسية','اختبار الأسية واللوغاريتمية','اختبار الضرب والقسمة','اختبار الاشتقاق الضمني والبارامتري','اختبار المشتقات العليا','اختبار لوبيتال والنهايات','اختبار تايلور وماكلورين','اختبار شامل 1','اختبار شامل 2','اختبار شامل 3'
-  ];
-  let testMode='general';
-  function pickQuestions(seed){let pool=[...quizBank];if(seed===2)pool=pool.filter(q=>/sin|cos|tan|cot|sec|cosec|جيب|ظل|قاطع/i.test(q.q+' '+q.e));if(seed===3)pool=pool.filter(q=>/عكسي|sin⁻¹|cos⁻¹|tan⁻¹/i.test(q.q+' '+q.e));if(seed===4)pool=pool.filter(q=>/sinh|cosh|tanh|زائدي/i.test(q.q+' '+q.e));if(seed===6)pool=pool.filter(q=>/ln|e\^|لوغاريتم|أسية/i.test(q.q+' '+q.e));if(pool.length<10)pool=[...quizBank];return pool.sort(()=>Math.random()-.5).slice(0,10)}
-  function renderCatalog(){const c=$('testCatalog');if(!c)return;c.innerHTML=tests.map((t,i)=>`<article class="test-card"><span class="tag">اختبار ${String(i+1).padStart(2,'0')}</span><h3>${t}</h3><p>10 أسئلة اختيار من متعدد · تصحيح فوري · حفظ النتيجة</p><button class="btn primary" onclick="startAcademyTest(${i})">ابدأ الاختبار ←</button></article>`).join('')}
-  window.startAcademyTest=function(i){testMode='general';state.activeTest=i;quizRun=pickQuestions(i);quizIndex=0;quizScore=0;quizLocked=false;$('quizQuestion').textContent='';$('quizStart').textContent='إعادة الاختبار';$('quizProgress').textContent=`الاختبار ${i+1} · السؤال 1 من 10`;drawQuiz();showPage('practice');};
-  window.startQuiz=function(){startAcademyTest((state.activeTest||0)%tests.length)};
-  $('quizStart').onclick=window.startQuiz;
-  $('quizNext').onclick=()=>window.nextQuiz();
-  window.drawQuiz=function(){const q=quizRun[quizIndex];if(!q)return;$('quizQuestion').textContent=q.q;$('quizProgress').textContent=`السؤال ${quizIndex+1} من 10`;$('quizOptions').innerHTML=q.o.map((o,i)=>`<button class="quiz-option" onclick="answerQuiz(${i})">${o}</button>`).join('');$('quizFeedback').innerHTML='';$('quizNext').disabled=true;$('quizNext').textContent=quizIndex===9?'إنهاء الاختبار':'السؤال التالي';quizLocked=false;typeset($('quizBox'))};
-  window.answerQuiz=function(i){if(quizLocked)return;quizLocked=true;const q=quizRun[quizIndex],ok=i===q.a;const bs=[...document.querySelectorAll('#quizOptions button')];bs.forEach((b,j)=>{if(j===q.a)b.classList.add('correct');if(j===i&&!ok)b.classList.add('wrong')});if(ok)quizScore++;else{state.quizErrors.push({question:q.q,chosen:q.o[i],correct:q.o[q.a],explanation:q.e});save()}$('quizFeedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b>${ok?'إجابة صحيحة ✓':'إجابة غير صحيحة'}</b><br>${q.e}<br>الإجابة الصحيحة: ${q.o[q.a]}</div>`;$('quizNext').disabled=false;typeset($('quizFeedback'))};
-  window.nextQuiz=function(){if(!quizLocked)return;if(quizIndex<9){quizIndex++;drawQuiz()}else{state.quizCount++;state.lastScore=quizScore+'/10';state.testHistory.push({name:tests[state.activeTest]||'اختبار',score:quizScore,total:10,date:new Date().toISOString()});save();$('quizQuestion').textContent=`انتهى الاختبار: ${quizScore} من 10`;$('quizOptions').innerHTML='';$('quizFeedback').innerHTML=`<div class="feedback ${quizScore>=7?'good':'bad'}">${quizScore>=7?'أداء جيد! استمر في التقدم.':'راجع القوانين والأخطاء ثم أعد الاختبار.'}<br>تم حفظ نتيجتك تلقائيًا.</div>`;$('quizNext').disabled=true;updateQuizStats()}};
-  // Lesson experience: visible title, remembered position, and a 10-question checkpoint at the end.
-  const oldOpenTopic=openTopic;
-  let enhancedLessonStep=null;
-  window.openTopic=function(id){state.lastTopic=id;state.lastPage='study';state.lastStep=0;save();oldOpenTopic(id);if(enhancedLessonStep){window.lessonStep=enhancedLessonStep;document.querySelectorAll('#lessonTabs [data-tab]').forEach(b=>b.addEventListener('click',()=>enhancedLessonStep(Number(b.dataset.tab))));enhancedLessonStep(0)}const t=topics.find(x=>x.id===id);if($('activeLessonTitle'))$('activeLessonTitle').textContent=t?.name||'غرفة المذاكرة';};
-  window.lessonStep=function(i){const id=window.currentTopic,content=lessons[id];if(!content)return;const panel=$('lessonContent'),tabs=$('lessonTabs');const t=topics.find(x=>x.id===id);state.lastTopic=id;state.lastStep=i;state.lastPage='study';save();tabs.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('selected',Number(b.dataset.tab)===i));$('activeLessonTitle').textContent=t?.name||'الدرس';
-    if(i<content.length){panel.innerHTML=`<div class="lesson-kicker">${t?.name||'مسار المذاكرة'} <span>الجزء ${i+1} من ${content.length}</span></div>${content[i]}<div class="lesson-controls"><button class="btn" ${i===0?'disabled':''} onclick="lessonStep(${i-1})">→ السابق</button><div class="lesson-dots">${content.map((_,j)=>`<button class="${j===i?'on':''}" aria-label="الجزء ${j+1}" onclick="lessonStep(${j})"></button>`).join('')}</div>${i===content.length-1?'<button class="btn primary" onclick="lessonStep('+content.length+')">اختبار اختياري · 10 أسئلة ←</button>':'<button class="btn primary" onclick="lessonStep('+(i+1)+')">التالي ←</button>'}</div>${i===content.length-1?'<div class="lesson-final-actions"><button class="btn" onclick="showPage(\'lessons\')">الانتقال إلى درس آخر</button><button class="btn" onclick="showPage(\'home\')">الخروج من الدرس</button></div>':''}`;
-    }else{renderLessonTest(id,panel)}typeset(panel);};
-  enhancedLessonStep=window.lessonStep;
-  function renderLessonTest(id,panel){const qs=pickQuestions(topics.findIndex(t=>t.id===id));let ix=0,score=0,locked=false;panel.innerHTML=`<div class="lesson-kicker">اختبار نهاية الدرس <span>10 أسئلة اختيار من متعدد</span></div><div class="lesson-test"><h3>اختبر فهمك: ${topics.find(t=>t.id===id)?.name||''}</h3><p class="muted">أجب عن الأسئلة العشرة. ستظهر نتيجة الاختبار بعد السؤال الأخير.</p><div id="lessonQuizArea"></div></div><div class="lesson-final-actions"><button class="btn" onclick="showPage('lessons')">العودة إلى خريطة المنهج</button><button class="btn primary" onclick="showPage('home')">الخروج من الدرس</button></div>`;
-    function draw(){const q=qs[ix];$('lessonQuizArea').innerHTML=`<div class="topic-top"><span class="tag">السؤال ${ix+1} من 10</span><span class="muted">النتيجة الحالية: ${score}</span></div><h3>${q.q}</h3><div>${q.o.map((o,j)=>`<button class="quiz-option" data-lq="${j}">${o}</button>`).join('')}</div><div id="lessonFeedback"></div><button class="btn primary" id="lessonNext" disabled style="margin-top:12px">${ix===9?'عرض النتيجة':'السؤال التالي'}</button>`;
-      document.querySelectorAll('[data-lq]').forEach(b=>b.onclick=()=>{if(locked)return;locked=true;const j=Number(b.dataset.lq),ok=j===q.a;if(ok)score++;document.querySelectorAll('[data-lq]').forEach((z,k)=>{if(k===q.a)z.classList.add('correct');if(k===j&&!ok)z.classList.add('wrong')});$('lessonFeedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}">${ok?'إجابة صحيحة ✓':'الإجابة غير صحيحة'}<br>${q.e}<br>الإجابة الصحيحة: ${q.o[q.a]}</div>`;$('lessonNext').disabled=false;});
-      $('lessonNext').onclick=()=>{if(!locked)return;if(ix<9){ix++;locked=false;draw()}else{state.lessonQuizResults[id]={score,total:10,date:new Date().toISOString()};state.quizCount++;state.lastScore=score+'/10';save();panel.innerHTML=`<div class="lesson-kicker">اكتمل اختبار الدرس</div><div class="lesson-test"><h2>نتيجتك: ${score} من 10</h2><p>${score>=7?'ممتاز! فهمك للدرس جيد، انتقل إلى درس جديد.':'راجع أجزاء الدرس التي تحتاج إلى تثبيت ثم أعد الاختبار من غرفة المذاكرة.'}</p><div class="lesson-final-actions"><button class="btn primary" onclick="showPage('lessons')">الانتقال إلى درس آخر</button><button class="btn" onclick="showPage('home')">الخروج من الدرس</button><button class="btn" onclick="openTopic('${id}')">إعادة الدرس والاختبار</button></div></div>`;typeset(panel)}};
-    }draw();
-  }
-  // Encouragement messages are intentionally varied and shown on demand from the ALAMBRATOR brand.
-  const motivationMessages=[
-   'لا تنتظر أن تشعر بالحماس كي تبدأ؛ ابدأ بخمس دقائق، وغالبًا سيأتي الحماس بعد أول خطوة.',
-   'كل مسألة تحاول حلها اليوم تجعل المسألة التالية أقل صعوبة. التقدم الحقيقي يتراكم بهدوء.',
-   'مش مطلوب منك تفهم المنهج كله في يوم واحد. المطلوب تفهم فكرة واحدة بإتقان، ثم تنتقل للي بعدها.',
-   'الغلط في الحل مش دليل فشل؛ ده دليل إنك وصلت لنقطة محتاجة تدريب. راجع السبب وجرّب من جديد.',
-   'لا تقارن سرعتك بحد. قارن فهمك النهارده بفهمك امبارح، وخلّي هدفك الاستمرار.',
-   'القانون اللي بتفهم معناه مش هتحتاج تحفظه بنفس المجهود. اسأل نفسك دائمًا: لماذا نستخدمه هنا؟',
-   'لو مسألة وقفت معاك، ارجع وحدد نوع الدالة، ثم اختار القاعدة، وبعدها نفّذ خطوة واحدة كل مرة.',
-   'جلسة مذاكرة قصيرة بتركيز أفضل من ساعات طويلة من غير انتباه. اقفل المشتتات وابدأ الآن.',
-   'أنت لا تبني درجة امتحان فقط؛ أنت تبني طريقة تفكير منظمة في حل المشكلات.',
-   'كل مرة ترجع فيها بعد الإحباط أنت بتقوّي عادة أهم من الموهبة: الالتزام.',
-   'ابدأ بالسهل لتكسب الثقة، ثم ارفع مستوى المسائل تدريجيًا. الصعب يصبح أسهل بالتدرّب.',
-   'خلي هدف الجلسة واضحًا: قانونان، مثالان، وخمسة أسئلة. الإنجاز الصغير يصنع فرقًا كبيرًا.',
-   'لا تكتفِ بقراءة الحل. غطِّ الخطوات وحاول تسترجعها بنفسك؛ هنا يبدأ التعلم الحقيقي.',
-   'لو نسيت قاعدة، لا تتضايق. ارجع لمكتبة القوانين، افهمها، ثم استخدمها في سؤال مباشر.',
-   'استمر حتى لو كان تقدمك بطيئًا. الثبات يومًا بعد يوم أقوى من اندفاع ينتهي بسرعة.'
-  ];let motivationIndex=Math.floor(Math.random()*motivationMessages.length);
-  window.showMotivation=function(){const m=$('motivationModal');if(!m)return;motivationIndex=Math.floor(Math.random()*motivationMessages.length);$('motivationText').textContent=motivationMessages[motivationIndex];m.hidden=false};
-  window.nextMotivation=function(){motivationIndex=(motivationIndex+1)%motivationMessages.length;$('motivationText').textContent=motivationMessages[motivationIndex]};
-  window.hideMotivation=function(){$('motivationModal').hidden=true};
-  // Settings interactions.
-  if($('themeSelect'))$('themeSelect').onchange=e=>{state.theme=e.target.value;applyPrefs();save();toast('تم حفظ الثيم')};
-  if($('fontSelect'))$('fontSelect').onchange=e=>{state.font=e.target.value;applyPrefs();save();toast('تم حفظ نوع الخط')};
-  if($('fullscreenBtn'))$('fullscreenBtn').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen();$('fullscreenBtn').textContent=document.fullscreenElement?'الخروج من ملء الشاشة':'عرض بملء الشاشة'}catch(e){toast('ميزة ملء الشاشة غير مدعومة في هذا المتصفح')}};
-  // Restore preferences and last meaningful screen/lesson after reload.
-  applyPrefs();renderCatalog();renderLaws();
-  const oldQuizCount=state.quizCount||0;
-  updateStats();updateQuizStats();
-  const savedTopic=state.lastTopic;
-  if(savedTopic&&topics.some(t=>t.id===savedTopic)){const resumeStep=state.lastStep||0;window.openTopic(savedTopic);window.currentTopic=savedTopic;const t=topics.find(x=>x.id===savedTopic);$('activeLessonTitle').textContent=t.name;lessonStep(Math.min(resumeStep,(lessons[savedTopic]||[]).length));}
-  const page=state.lastPage||'home';if(page==='study'&&savedTopic)oldShowPage('study');else oldShowPage(['home','lessons','study','practice','laws','calculator','videos','notes','settings'].includes(page)?page:'home');
-  // Persist page changes even when navigation is initiated by inline buttons.
-  document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>{state.lastPage=b.dataset.page;save()}));
-  window.addEventListener('beforeunload',()=>{state.lastActivity=new Date().toISOString();localStorage.setItem('mathMasterState',JSON.stringify(state))});
-})();
-</script>
-
+<!-- ============ SCRIPTS ============ -->
+<script src="data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
